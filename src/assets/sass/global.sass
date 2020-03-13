@@ -1,0 +1,54 @@
+@import "~bulma"
+@import "~buefy/src/scss/buefy"
+@import 'constants'
+@import "transition"
+
+html
+  font-size: 16px
+  height: 100%
+
+body
+  font-size: 1rem
+  line-height: 1.25
+  font-family: $font
+  height: 100%
+  margin: 0
+  padding: 0
+
+nav ul
+  list-style: none
+
+li
+  list-style: none
+
+a
+  text-decoration: none
+  color: black
+
+p
+  margin: 0px
+
+.flexbox
+  display: flex
+  &.has-space-around
+    justify-content: space-around
+    // > :not(:last-child)
+    //   margin-right: 0
+  &.has-space-between
+    justify-content: space-between
+    // > :not(:last-child)
+    //   margin-right: 0
+
+.flexcolumn
+  display: flex
+  flex-direction: column
+  &.is-center
+    justify-content: center
+  &.has-space-around
+  justify-content: space-around
+  // > :not(:last-child)
+  //   margin-right: 0
+  &.has-space-between
+    justify-content: space-between
+    // > :not(:last-child)
+    //   margin-right: 0
