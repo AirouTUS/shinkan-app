@@ -7,31 +7,20 @@
 
 <script lang="ts">
 import Vue from 'vue'
-
-type Category = {
-  id: number,
-  name: string
-}
-type Tab = {
-  tab: number
-}
-
-const categories = [
-  {
-    id: 1,
-    name: '運動サークル'
-  }, {
-    id: 2,
-    name: '文化サークル'
-  }
-] as (Category & Tab)[] 
+import CircleCategoryModel from '@/models/CircleCategoryModel'
+import { Category } from '@/types'
 
 export default Vue.extend({
   data() {
     return {
-      categories,
+      categories: [] as Category[],
       activeTab: 0
     }
+  },
+  created() {
+    new CircleCategoryModel().get().then(res => {
+      this.categories = res.data.categories as Category[]
+    })
   },
   watch: {
     activeTab(val: number) {

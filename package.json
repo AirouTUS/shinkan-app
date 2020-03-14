@@ -10,11 +10,13 @@
     "@vue/composition-api": "^0.4.0",
     "axios": "^0.19.2",
     "buefy": "^0.8.13",
+    "qs": "^6.9.1",
     "vue": "^2.6.11",
     "vue-router": "^3.1.5",
     "vuex": "^3.1.2"
   },
   "devDependencies": {
+    "@types/qs": "^6.9.1",
     "@vue/cli-plugin-router": "~4.2.0",
     "@vue/cli-plugin-typescript": "~4.2.0",
     "@vue/cli-plugin-vuex": "~4.2.0",
