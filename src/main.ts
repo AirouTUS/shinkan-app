@@ -5,6 +5,7 @@ import store from './store'
 import './plugins/composition-api'
 import Buefy from 'buefy'
 import './assets/sass/global.sass'
+import './plugins/v-img'
 
 Vue.config.productionTip = false
 

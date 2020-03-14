@@ -49,9 +49,10 @@ export default Vue.extend({
           > li 
             > a
               color: $text-gray
+              border-color: none
               &:hover
                 color: $main-color
-                border-color: $main-color
+                border-bottom: solid 2px $main-color
             &.is-active
               > a
                 color: $main-color
