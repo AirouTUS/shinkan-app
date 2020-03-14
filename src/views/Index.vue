@@ -1,12 +1,14 @@
 <template lang="pug">
-  div#index index
+  div#index
     router-view
+    footer-nav
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import FooterNav from '@/components/FooterNav.vue'
 export default Vue.extend({
-  
+  components:{FooterNav}
 })
 </script>
 

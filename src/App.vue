@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#app app
+  div#app
     router-view
     footer-nav
 </template>
@@ -8,8 +8,6 @@
 import Vue from 'vue'
 import FooterNav from '@/components/FooterNav.vue'
 export default Vue.extend({
-  components:{FooterNav}
-  
 })
 </script>
 

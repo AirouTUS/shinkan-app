@@ -1,8 +1,13 @@
 <template lang="pug">
-  div#footer-nav
-    div(:class="{ active: pageName==='top' }" @click="changePage('top')") ページ1
-    div(:class="{ active: pageName==='circles' }" @click="changePage('circles')") ページ2
-    img(src="@/assets/svg/CircleList.svg")
+  div#wrapper
+    div#footer-nav
+      div#top-icon(@click="changePage('')")
+        img(src="@/assets/svg/CircleTop.svg")
+        p TUS新歓
+      div#list-icon(@click="changePage('circles')")
+        img(src="@/assets/svg/CircleList.svg")
+        div#kuuhaku
+          p サークル一覧
 </template>
 
 <script lang="ts">
@@ -18,18 +23,38 @@ export default Vue.extend({
     },
     methods: {
       changePage(page:string):void{
-        alert(page)
-        this.pageName=page
+        this.pageName = page
         console.log(`${location.host}/${page}`)
-        // window.location.href=`${location.hostname} /${page}`
+        window.location.href = `${page}`
       }
     }
 })
 </script>
 
 <style lang="sass" scoped>
-  #footer-nav
-    img
-      fill: red
-    
+  #wrapper
+    position: fixed
+    bottom: 0
+  #footer-nav 
+    display: -webkit-flex
+    display: flex
+    align-items: stretch
+    position:fixed
+    font-family: Hiragino Kaku Gothic ProN
+    bottom: 0
+    background: white
+    width: 100vw
+    box-sizing: border-box
+    border-top: 1px solid gainsboro
+  #top-icon
+    text-align: center
+    font-size: 12px
+    margin-left: 24px
+  #list-icon
+    text-align: center
+    font-size: 12px
+    margin-left: 19px
+    margin-top: 3px
+  #kuuhaku
+    margin-top: 7px
 </style>

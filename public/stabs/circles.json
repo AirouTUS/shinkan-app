@@ -1,0 +1,58 @@
+{
+  "categories": [
+    {
+      "name": "文化系"
+    }
+  ],
+  "circles": [
+    {
+      "id": 0,
+      "name": "airou",
+      "about": "プログラミング学習、教育",
+      "catchCopy": "string",
+      "description": "string",
+      "types": [
+        {
+          "id": 1,
+          "name": "葛飾"
+        }
+      ],
+      "category": {
+        "id": 3,
+        "name": "文化系"
+      }
+    }, {
+      "id": 1,
+      "name": "airou",
+      "about": "プログラミング学習、教育",
+      "catchCopy": "string",
+      "description": "string",
+      "types": [
+        {
+          "id": 1,
+          "name": "葛飾"
+        }
+      ],
+      "category": {
+        "id": 3,
+        "name": "文化系"
+      }
+    }, {
+      "id": 2,
+      "name": "airou",
+      "about": "プログラミング学習、教育",
+      "catchCopy": "string",
+      "description": "string",
+      "types": [
+        {
+          "id": 1,
+          "name": "葛飾"
+        }
+      ],
+      "category": {
+        "id": 3,
+        "name": "文化系"
+      }
+    }
+  ]
+}
