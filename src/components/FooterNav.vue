@@ -47,10 +47,12 @@ export default Vue.extend({
     box-sizing: border-box
     border-top: 1px solid gainsboro
   #top-icon
+    color: #BBBBBB
     text-align: center
     font-size: 12px
     margin-left: 24px
   #list-icon
+    color: #A8DC39
     text-align: center
     font-size: 12px
     margin-left: 19px
