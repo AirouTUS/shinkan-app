@@ -1,10 +1,11 @@
 <template lang="pug">
   div#wrapper
     div#footer-nav
-      div#top-icon(@click="changePage('')")
+      router-link#top-icon(to="/")
         img(src="@/assets/svg/CircleTop.svg")
         p TUS新歓
-      div#list-icon(@click="changePage('circles')")
+      router-link#list-icon(to="/circles")
+        router-link(to="/circles")
         img(src="@/assets/svg/CircleList.svg")
         div#kuuhaku
           p サークル一覧
@@ -23,9 +24,6 @@ export default Vue.extend({
     },
     methods: {
       changePage(page:string):void{
-        this.pageName = page
-        console.log(`${location.host}/${page}`)
-        window.location.href = `${page}`
       }
     }
 })
