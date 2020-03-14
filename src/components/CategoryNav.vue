@@ -27,6 +27,7 @@ export default Vue.extend({
       const nowCategoryIndex = this.categories.findIndex((category, i) => i === val)
       const query = Object.assign({}, this.$route.query, {category: this.categories[nowCategoryIndex].id})
       this.$router.push({query})
+      this.$emit("navigation")
     }
   }
 })
@@ -47,6 +48,9 @@ export default Vue.extend({
           > li 
             > a
               color: $text-gray
+              &:hover
+                color: $main-color
+                border-color: $main-color
             &.is-active
               > a
                 color: $main-color
