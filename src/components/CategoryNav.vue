@@ -32,6 +32,13 @@ export default Vue.extend({
       categories,
       activeTab: 0
     }
+  },
+  watch: {
+    activeTab(val: number) {
+      const nowCategoryIndex = this.categories.findIndex((category, i) => i === val)
+      const query = Object.assign({}, this.$route.query, {category: this.categories[nowCategoryIndex].id})
+      this.$router.push({query})
+    }
   }
 })
 </script>
