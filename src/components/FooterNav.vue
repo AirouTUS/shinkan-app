@@ -20,7 +20,9 @@ export default {
   #wrapper
     position: fixed
     bottom: 0
-  #footer-nav 
+  #footer-nav
+    padding-bottom: 0.8%
+    padding-top: 0.7%
     display: -webkit-flex
     display: flex
     align-items: stretch
