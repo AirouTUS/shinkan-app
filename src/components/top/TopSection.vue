@@ -48,8 +48,4 @@
                     font-style: normal
                     font-size: 32px
                     line-height: 48px
-
-
-
-
 </style>
