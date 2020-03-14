@@ -19,8 +19,8 @@
       }
     }, {
       "id": 1,
-      "name": "airou",
-      "about": "プログラミング学習、教育",
+      "name": "葛飾友理会",
+      "about": "学生自治活動団体",
       "eyecatch": "https://media2.tokyodisneyresort.jp/home/tdl/top/mainL_201910_01.jpg",
       "catchCopy": "string",
       "description": "string",
@@ -36,8 +36,8 @@
       }
     }, {
       "id": 2,
-      "name": "airou",
-      "about": "プログラミング学習、教育",
+      "name": "理科大生協学生委員会",
+      "about": "生協を盛り上げる",
       "eyecatch": "https://media2.tokyodisneyresort.jp/home/tdl/top/mainL_201910_01.jpg",
       "catchCopy": "string",
       "description": "string",

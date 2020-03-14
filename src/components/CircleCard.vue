@@ -1,7 +1,7 @@
 <template lang="pug">
   div#circle-card
     v-img.eye-catch(:src="circle.eyecatch")
-    p.catch-copy {{ circle.catchCopy }}
+    p.catch-copy {{ circle.about }}
     p.name {{ circle.name }}
 </template>
 
@@ -32,15 +32,12 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
   #circle-card
-    width: 100%
     margin: 12px 0
     .catch-copy
-      width: 100%
       margin-top: 8px
       font-size: $text-small
       color: $text-gray
     .name
-      width: 100%
       margin-top: 4px
       font-size: $text-large
       font-weight: bold
