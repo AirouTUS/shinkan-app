@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#app app
+  div#app
     router-view
     footer-nav
 </template>
