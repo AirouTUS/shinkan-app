@@ -1,5 +1,6 @@
 <template lang="pug">
   div#index index
+    router-view
 </template>
 
 <script lang="ts">

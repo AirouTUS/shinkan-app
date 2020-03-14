@@ -8,16 +8,23 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    path: "/",
+    path: '/',
+    name: 'index',
     component: Index,
     children: [
       {
         path: '',
+        name: 'top',
         component: Top
       }, {
         path: 'circles',
+        name: 'circles',
         component: Circles
-      },
+      }, {
+        path: 'circles/:id',
+        name: 'circleDetail',
+        component: Circles
+      }
     ]
   }
 ]
