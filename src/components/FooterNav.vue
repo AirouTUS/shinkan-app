@@ -1,19 +1,32 @@
 <template lang="pug">
   div#wrapper
     div#footer-nav
-      div#top-icon
+      router-link#top-icon(to="/")
         img(src="@/assets/svg/CircleTop.svg")
         p TUS新歓
-      div#list-icon
+      router-link#list-icon(to="/circles")
+        router-link(to="/circles")
         img(src="@/assets/svg/CircleList.svg")
         div#kuuhaku
           p サークル一覧
 </template>
 
 <script lang="ts">
-export default {
-
+import Vue from "vue"
+export type DataType = {
+    pageName: string
 }
+export default Vue.extend({
+    data(): DataType {
+      return {
+        pageName:'top'
+      }
+    },
+    methods: {
+      changePage(page:string):void{
+      }
+    }
+})
 </script>
 
 <style lang="sass" scoped>
