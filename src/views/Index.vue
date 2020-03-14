@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#index index
+  div#index
     router-view
 </template>
 
