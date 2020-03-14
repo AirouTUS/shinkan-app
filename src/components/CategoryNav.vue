@@ -40,6 +40,7 @@ export default Vue.extend({
       top: 0
       width: 100%
       height: $header-nav-height
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25)
       background: white
       z-index: 9
       > .b-tabs > .tabs
