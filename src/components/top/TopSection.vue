@@ -5,8 +5,6 @@
             div
               p 東京理科大学
               p WEB新歓 2020
-
-
 </template>
 
 <script lang="ts">
@@ -35,13 +33,10 @@
         > .campus
             overflow: hidden
             width: 100%
-
             object-fit: cover
             display: flex
             align-items: center
             justify-content: center
-
-
             > div
                 z-index: 1
                 text-align: center
