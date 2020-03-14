@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#top top
+  div#top
     top-section
     circle-list-section
 </template>
