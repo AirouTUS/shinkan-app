@@ -1,62 +1,51 @@
 <template lang="pug">
-  div#wrapper
-    div#footer-nav
-      router-link#top-icon(to="/")
-        img(src="@/assets/svg/CircleTop.svg")
-        p TUS新歓
-      router-link#list-icon(to="/circles")
-        router-link(to="/circles")
-        img(src="@/assets/svg/CircleList.svg")
-        div#kuuhaku
-          p サークル一覧
+  nav#footer-nav.flexbox.footer-nav
+    router-link.flexcolumn.has-space-betweeen.footer-nav-item(to="/" exact)
+      tus-icon
+      label TUS新歓
+    router-link.flexcolumn.has-space-between.footer-nav-item(to="/circles" exact)
+      list-icon
+      label サークル一覧
 </template>
 
 <script lang="ts">
 import Vue from "vue"
-export type DataType = {
-    pageName: string
-}
+import TusIcon from '@/components/svg/TusIcon.vue'
+import ListIcon from '@/components/svg/ListIcon.vue'
+
 export default Vue.extend({
-    data(): DataType {
-      return {
-        pageName:'top'
-      }
-    },
-    methods: {
-      changePage(page:string):void{
-      }
-    }
+  components: { TusIcon, ListIcon }
 })
 </script>
 
+<style lang="sass">
+  #footer-nav
+    .router-link-active
+      > p
+        color: $main-color
+      > svg > path
+        fill: $main-color
+</style>
+
 <style lang="sass" scoped>
-  #wrapper
+  .footer-nav
     position: fixed
     bottom: 0
-  #footer-nav
-    padding-bottom: 0.8%
-    padding-top: 0.7%
-    display: -webkit-flex
-    display: flex
-    align-items: stretch
-    position:fixed
-    font-family: Hiragino Kaku Gothic ProN
-    bottom: 0
-    background: white
     width: 100vw
-    box-sizing: border-box
-    border-top: 1px solid gainsboro
-  #top-icon
-    color: #BBBBBB
-    text-align: center
-    font-size: 12px
-    margin-left: 24px
-  #list-icon
-    color: #A8DC39
-    text-align: center
-    font-size: 12px
-    margin-left: 19px
-    margin-top: 3px
-  #kuuhaku
-    margin-top: 7px
+    padding: 8px 24px
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15)
+    z-index: 9
+    background: white
+    > .footer-nav-item
+      align-items: center
+      padding-right: 16px
+      color: $text-gray
+      transition: all .2s ease
+      > label
+        padding-top: .25rem
+        font-size: $text-mini
+        color: currentColor
+        font-weight: bold
+      &.router-link-active
+        color: $main-color
 </style>
