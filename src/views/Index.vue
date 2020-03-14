@@ -1,6 +1,6 @@
 <template lang="pug">
   div#index
-    router-view
+    router-view.spacer
     footer-nav
 </template>
 
@@ -14,4 +14,6 @@ export default Vue.extend({
 
 <style lang="sass">
   #index
+  .spacer
+    padding-bottom: 55px
 </style>
