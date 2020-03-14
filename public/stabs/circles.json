@@ -2,10 +2,10 @@
   "circles": [
     {
       "id": 0,
-      "name": "airou",
+      "name": "airou -プログラミングサークル-",
       "about": "プログラミング学習、教育",
       "eyecatch": "https://media2.tokyodisneyresort.jp/home/tdl/top/mainL_201910_01.jpg",
-      "catchCopy": "string",
+      "catchCopy": "プログラミング学習・教育",
       "description": "string",
       "types": [
         {

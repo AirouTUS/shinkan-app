@@ -1,6 +1,7 @@
 <template lang="pug">
   div#index
-    router-view.spacer
+    transition(name="slide-fade-reverse" mode="out-in")
+      router-view.spacer
     footer-nav
 </template>
 

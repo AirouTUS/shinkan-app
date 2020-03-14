@@ -32,12 +32,15 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
   #circle-card
+    width: 100%
     margin: 12px 0
     .catch-copy
+      width: 100%
       margin-top: 8px
       font-size: $text-small
       color: $text-gray
     .name
+      width: 100%
       margin-top: 4px
       font-size: $text-large
       font-weight: bold

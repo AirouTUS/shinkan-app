@@ -3,7 +3,7 @@
     router-link.flexcolumn.has-space-betweeen.footer-nav-item(to="/" exact)
       tus-icon
       label TUS新歓
-    router-link.flexcolumn.has-space-between.footer-nav-item(to="/circles" exact)
+    router-link.flexcolumn.has-space-between.footer-nav-item(:to='{ path: "/circles", query: { category: 0 } }')
       list-icon
       label サークル一覧
 </template>
@@ -12,7 +12,6 @@
 import Vue from "vue"
 import TusIcon from '@/components/svg/TusIcon.vue'
 import ListIcon from '@/components/svg/ListIcon.vue'
-
 export default Vue.extend({
   components: { TusIcon, ListIcon }
 })

@@ -1,6 +1,6 @@
 <template lang="pug">
   div#circles
-    category-nav(@navigation="navigationHandler")
+    category-navbar(@navigation="navigationHandler")
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div")
       template(v-for="circle in circles")
         circle-card.circle-list-card(:circle="circle" :key="circle.id" )
@@ -8,13 +8,13 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CategoryNav from '@/components/CategoryNav.vue'
+import CategoryNavbar from '@/components/CategoryNavbar.vue'
 import CircleCard from '@/components/CircleCard.vue'
 import CircleModel from '@/models/CircleModel'
 import { Circle } from '@/types'
 
 export default Vue.extend({
-  components: { CategoryNav, CircleCard },
+  components: { CategoryNavbar, CircleCard },
   data() {
     return {
       circles: [] as Circle[]

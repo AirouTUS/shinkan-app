@@ -19,29 +19,34 @@ export default Vue.extend({
 <style lang="sass">
   #top-section
     position: relative
-    overflow: hidden
+    // overflow: hidden
     width: 100%
     height: 200px
     .main-image
       position: absolute
-      left: -2px
-      top: -2px
-      width: calc(100% + 4px)
-      height: calc(100% + 4px)
+      // left: -2px
+      // top: -2px
+      // width: calc(100% + 4px)
+      // height: calc(100% + 4px)
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
       z-index: -1
       > img
         object-fit: cover
-        -ms-filter: blur(2px)
-        filter: blur(2px)
+        // -ms-filter: blur(2px)
+        // filter: blur(2px)
 </style>
 
 <style lang="sass" scoped>
   .content
     height: 100%
+    background-color: rgba(50, 50, 50, 0.3)
     &-message
       color: white
       font-weight: bold
       text-align: center
-      font-size: 32px
+      font-size: 36px
       line-height: 48px
 </style>

@@ -40,16 +40,17 @@ export default Vue.extend({
       top: 0
       width: 100%
       height: $header-nav-height
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25)
+      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
       background: white
       z-index: 9
       > .b-tabs > .tabs
         > ul
           color: $text-gray
+          border: none
           > li 
             > a
               color: $text-gray
-              border-color: none
+              border: none
               &:hover
                 color: $main-color
                 border-bottom: solid 2px $main-color
