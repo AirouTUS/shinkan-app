@@ -3,7 +3,8 @@
     category-navtag.category-label
     div.circles
       template(v-for="circle in circles")
-        circle-card.item(:circle="circle" :key="circle.id" )
+        div.item(:key="circle.id" @click="showDetail(circle)")
+          circle-card(:circle="circle")
 </template>
 
 <script lang="ts">
@@ -29,6 +30,9 @@ export default Vue.extend({
       new CircleModel().getList().then(res => {
         this.circles = res.data.circles
       })
+    },
+    showDetail(circle: Circle) {
+      this.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
     }
   }
 })

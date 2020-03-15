@@ -3,7 +3,7 @@
     transition(name="header-slide-fade" mode="out-in")
       category-navbar(v-show="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")
-      circle-header(v-show="isDetail")
+      circle-header(v-if="isDetail" :circle="selectedCircle")
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       div.circle-list-card(v-for="circle in circles" :key="circle.id" @click="showDetail(circle)")
         circle-card(:circle="circle")
@@ -13,7 +13,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { defineComponent, reactive, toRefs, watch } from '@vue/composition-api'
+import { defineComponent, reactive, toRefs, watch, onBeforeMount } from '@vue/composition-api'
 import CircleModel from '@/models/CircleModel'
 import { Circle, Category } from '@/types'
 
@@ -28,35 +28,44 @@ export default defineComponent({
   setup(_ , {root}) {
     const state = reactive({
       circles: [] as Circle[],
-      isDetail: false
+      isDetail: false,
+      selectedCircle: {} as Circle
     })
 
+    const setCircleById = (id: number) => {
+      state.selectedCircle = state.circles[id]
+      state.isDetail = true
+    }
     const init = () => {
       new CircleModel().getList().then(res => {
         state.circles = res.data.circles
+        const id = Number(root.$route.params.id)
+        if ( !isNaN(id) ) setCircleById(id)
       })
     }
+    init ()
+
+    const showDetail = (circle: Circle) => {
+      root.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
+    }
+
     const navigationHandler = (category: Category) => {
       const query = Object.assign({}, root.$route.query, {category: category.id})
       root.$router.push({name: 'circles', query})
       state.circles = []
       setTimeout(init, 200)
     }
-    const showDetail = (circle: Circle) => {
-      root.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
-    }
 
-    watch(() => root.$route.params.id, (val) => {
-      if (val !== undefined) return state.isDetail = true
+    watch(() => root.$route.params.id, () => {
+      const id = Number(root.$route.params.id)
+      if ( state.circles.length > 0 && !isNaN(id) ) return setCircleById(id)
       state.isDetail = false
     })
-
-    init()
 
     return {
       ...toRefs(state),
       navigationHandler,
-      showDetail
+      showDetail,
     }
   }
 })

@@ -6,6 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
 import TopSection from '@/components/top/TopSection.vue'
 import CircleListSection from '@/components/top/CircleListSection.vue'
 

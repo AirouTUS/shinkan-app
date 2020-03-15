@@ -1,11 +1,24 @@
 <template lang="pug">
-  nav circle header
+  nav {{ circle.name }}
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  
+import { defineComponent, PropType } from '@vue/composition-api';
+import { Circle } from '../types';
+
+type Props = {
+  circle: Circle
+}
+
+export default defineComponent({
+  props: {
+    circle: {
+      type: Object as PropType<Circle>
+    }
+  },
+  setup(props: Props) {
+
+  }
 })
 </script>
 
