@@ -1,8 +1,7 @@
 <template lang="pug">
-  div#category-nav
-    nav
-      b-tabs(v-model="activeTab" position="is-centered")
-        b-tab-item(v-for="category in categories" :key="category.id" :label="category.name")
+  nav#category-navbar
+    b-tabs(v-model="activeTab" position="is-centered")
+      b-tab-item(v-for="category in categories" :key="category.id" :label="category.name")
 </template>
 
 <script lang="ts">
@@ -25,37 +24,36 @@ export default Vue.extend({
   watch: {
     activeTab(val: number) {
       const nowCategoryIndex = this.categories.findIndex((category, i) => i === val)
-      const query = Object.assign({}, this.$route.query, {category: this.categories[nowCategoryIndex].id})
-      this.$router.push({query})
-      this.$emit("navigation")
+      if (nowCategoryIndex !== -1) {
+        this.$emit("navigation", this.categories[nowCategoryIndex])
+      }
     }
   }
 })
 </script>
 
 <style lang="sass">
-  #category-nav
-    nav
-      position: fixed
-      top: 0
-      width: 100%
+  #category-navbar
+    position: fixed
+    top: 0
+    width: 100%
+    height: $header-nav-height
+    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
+    background: white
+    > .b-tabs > .tabs
       height: $header-nav-height
-      box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1)
-      background: white
-      z-index: 9
-      > .b-tabs > .tabs
-        > ul
-          color: $text-gray
-          border: none
-          > li 
+      > ul
+        color: $text-gray
+        border: none
+        > li 
+          > a
+            color: $text-gray
+            border: none
+            &:hover
+              color: $main-color
+              border-bottom: solid 2px $main-color
+          &.is-active
             > a
-              color: $text-gray
-              border: none
-              &:hover
-                color: $main-color
-                border-bottom: solid 2px $main-color
-            &.is-active
-              > a
-                color: $main-color
-                border-bottom: 2px solid $main-color
+              color: $main-color
+              border-bottom: 2px solid $main-color
 </style>

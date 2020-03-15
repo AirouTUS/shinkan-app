@@ -7,10 +7,10 @@ export default class CircleModel extends BaseModel {
 
   public async get() {
     return this.axios
-      .get(`stabs/circle.json`)
+      .get(`/stabs/circle.json`)
   }
   public async getList() {
     return this.axios
-      .get('stabs/circles.json')
+      .get('/stabs/circles.json')
   }
 }

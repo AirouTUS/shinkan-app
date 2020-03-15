@@ -7,6 +7,6 @@ export default class CircleCategoryModel extends BaseModel {
 
   public async get() {
     return this.axios
-      .get(`stabs/categories.json`)
+      .get(`/stabs/categories.json`)
   }
 }
