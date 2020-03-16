@@ -31,13 +31,13 @@ export default Vue.extend({
     position: fixed
     bottom: 0
     width: 100vw
-    padding: 8px 24px
+    padding: 8px 32px
     box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15)
     z-index: 9
     background: white
     > .footer-nav-item
       align-items: center
-      padding-right: 16px
+      margin-right: 24px
       color: $text-gray
       transition: all .2s ease
       > label

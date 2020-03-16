@@ -4,11 +4,13 @@
       category-navbar(v-show="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")
       circle-header(v-if="isDetail" :circle="selectedCircle")
-    transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
+      
+    transition-group.content.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       div.circle-list-card(v-for="circle in circles" :key="circle.id" @click="showDetail(circle)")
         circle-card(:circle="circle")
-    transition(name="slide-fade-reverse" mode="out-in")
-      circle-detail(v-show="isDetail")
+
+    transition.content(name="slide-fade-reverse" mode="out-in")
+      circle-detail(v-if="isDetail")
 </template>
 
 <script lang="ts">
@@ -74,8 +76,10 @@ export default defineComponent({
 <style lang="sass">
   #circles
     padding-top: $header-nav-height
+    .content
+      margin: 0 24px
     .circle-list
-      padding: 24px 24px 0 24px
+      padding: 24px 0
       &-card
         width: 100%
         padding-bottom: 24px
