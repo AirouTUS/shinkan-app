@@ -2,8 +2,9 @@
   nav#circle-header.flexbox.has-space-between
     div.space-icon
       b-icon(icon="chevron-left" @click.native="root.$router.go(-1)")
-    div.space-name
-      h1 {{ circle.name }}
+    div.space-name.flexcolumn.has-space-between
+      h1.bold {{ circle.name }}
+      h2 運動サークル
     div.space-none-icon
 </template>
 
@@ -34,7 +35,11 @@ export default defineComponent({
     .space-icon
       color: $main-color
     .space-name
-      font-size: $text-large
+      align-items: center
+      > h1
+      > h2
+        font-size: $text-mini
+        color: $text-gray
     .space-none-icon
       width: 24px
       height: 24px
