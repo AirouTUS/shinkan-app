@@ -18,12 +18,13 @@ const props = {
 
 export default defineComponent({
   props,
-  setup(props: Props, { root }) {
+  setup(props: Props, { root, emit }) {
     const state = reactive({
       loaded: false
     })
     const onLoad = () => {
       state.loaded = true
+      emit('onLoaded')
     }
     return {
       ...toRefs(state),
@@ -35,7 +36,7 @@ export default defineComponent({
 
 <style lang="sass" scoped>
   .v-img
-    background-color: #EEEEEE
+    background-color: #F4F4F4
     > img
       width: 100%
       height: 100%

@@ -6,6 +6,7 @@ import './plugins/composition-api'
 import Buefy from 'buefy'
 import './assets/sass/global.sass'
 import './plugins/v-img'
+import './plugins/v-modal'
 
 Vue.config.productionTip = false
 

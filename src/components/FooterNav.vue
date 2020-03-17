@@ -10,8 +10,8 @@
 
 <script lang="ts">
 import Vue from "vue"
-import TusIcon from '@/components/svg/TusIcon.vue'
-import ListIcon from '@/components/svg/ListIcon.vue'
+import TusIcon from '@/components/Svg/TusIcon.vue'
+import ListIcon from '@/components/Svg/ListIcon.vue'
 export default Vue.extend({
   components: { TusIcon, ListIcon }
 })

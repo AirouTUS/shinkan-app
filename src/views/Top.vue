@@ -6,12 +6,16 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import router from '@/router'
+import store from '@/store/index'
 
-import TopSection from '@/components/top/TopSection.vue'
-import CircleListSection from '@/components/top/CircleListSection.vue'
+import TopSection from '@/components/Top/TopSection.vue'
+import CircleListSection from '@/components/Top/CircleListSection.vue'
 
 export default Vue.extend({
-  components: { CircleListSection, TopSection }
+  components: { CircleListSection, TopSection },
+  mounted() {
+  }
 })
 </script>
 

@@ -1,18 +1,22 @@
 <template lang="pug">
 div#top-section
-  div.flexcolumn.has-space-around.content
-    p.content-message
+  div.flexcolumn.has-space-around.content(:class="{'bg-gray': imageLoaded}")
+    p.content-message(v-show="imageLoaded")
       | 東京理科大学 
       br 
       | WEB新歓 2020
-  v-img.main-image(src="/img/campus.jpg")
+  v-img.main-image(src="/img/campus.jpg" @onLoaded="imageLoaded = true")
 
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  
+  data() {
+    return {
+      imageLoaded: false
+    }
+  }
 })
 </script>
 
@@ -40,9 +44,10 @@ export default Vue.extend({
 </style>
 
 <style lang="sass" scoped>
+  .bg-gray
+    background-color: rgba(50, 50, 50, 0.3)
   .content
     height: 100%
-    background-color: rgba(50, 50, 50, 0.3)
     &-message
       color: white
       font-weight: bold
