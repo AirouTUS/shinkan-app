@@ -35,7 +35,7 @@ export default defineComponent({
     })
 
     const setCircleById = (id: number) => {
-      state.selectedCircle = state.circles[id]
+      state.selectedCircle = state.circles.find(circle => circle.id === id) || {} as Circle
       state.isDetail = true
     }
     const init = () => {
