@@ -12,7 +12,7 @@ type Props = {
 const props = {
   src: {
     type: String,
-    required: true
+    default: 'https://pbs.twimg.com/media/EQLALdyU0AAX6fd?format=jpg&name=4096x4096'
   }
 }
 

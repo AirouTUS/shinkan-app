@@ -6,7 +6,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import CircleCategoryModel from '@/models/CircleCategoryModel'
+import CategoryModel from '@/models/CategoryModel'
 import { Category } from '@/types'
 
 export default Vue.extend({
@@ -17,7 +17,7 @@ export default Vue.extend({
     }
   },
   created() {
-    new CircleCategoryModel().get().then(res => {
+    new CategoryModel().getList().then(res => {
       this.categories = res.data.categories as Category[]
     })
   },
