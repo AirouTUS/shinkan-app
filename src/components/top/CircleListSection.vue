@@ -27,12 +27,9 @@ export default Vue.extend({
   },
   methods: {
     init() {
-      setTimeout(() => {
       new CircleModel().getList().then(res => {
         this.circles = res.data.circles
       })
-      }, 1000)
-
     },
     showDetail(circle: Circle) {
       if (circle.id === undefined) return
