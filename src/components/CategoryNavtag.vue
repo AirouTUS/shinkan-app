@@ -1,15 +1,19 @@
 <template lang="pug">
   div.category-navtag.flexbox
-    router-link.category-navtag-item.flexbox(to="/")
+    router-link.category-navtag-item.flexbox(to="/" :class="customClass")
       b-icon(icon="running")
-      span.name 運動サークル
+      span.name.bold 運動サークル
       b-icon.mini-icon(icon="chevron-right")
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  
+  props: {
+    customClass: {
+      type: String
+    }
+  }
 })
 </script>
 
@@ -28,10 +32,11 @@ export default Vue.extend({
       padding: 10px 24px
       align-items: center
       color: white
-      border-radius: 100px
-      background-color: $tag-orange
-      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
+      border-radius: 8px
+      background: $loading-color
+      box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
       .name
+        font-size: $text-large
         margin-left: 16px
         margin-right: 8px
 </style>

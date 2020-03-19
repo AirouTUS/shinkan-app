@@ -10,12 +10,11 @@ import router from '@/router'
 import store from '@/store/index'
 
 import TopSection from '@/components/Top/TopSection.vue'
+// import CategoryListSection from '@/components/CategoryListSection.vue'
 import CircleListSection from '@/components/Top/CircleListSection.vue'
 
 export default Vue.extend({
   components: { CircleListSection, TopSection },
-  mounted() {
-  }
 })
 </script>
 
@@ -25,5 +24,5 @@ export default Vue.extend({
 <style lang="sass" scoped>
   #top
     .page-section
-      margin-bottom: 28px
+      // margin-bottom: 28px
 </style>

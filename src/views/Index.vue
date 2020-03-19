@@ -9,7 +9,10 @@
 import Vue from 'vue'
 import FooterNav from '@/components/FooterNav.vue'
 export default Vue.extend({
-  components:{FooterNav}
+  components:{FooterNav},
+  beforeCreate() {
+    this.$store.dispatch('getCategories')
+  }
 })
 </script>
 

@@ -25,7 +25,7 @@ export default Vue.extend({
     position: relative
     // overflow: hidden
     width: 100%
-    height: 200px
+    height: 240px
     .main-image
       position: absolute
       // left: -2px

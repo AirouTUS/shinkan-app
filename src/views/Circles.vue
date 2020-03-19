@@ -5,9 +5,9 @@
     transition(name="header-slide-fade" mode="out-in")
       circle-header(v-if="isDetail" :circle="selectedCircle")
       
-    transition-group.content.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
-      div.circle-list-card(v-for="circle in circles" :key="circle.id" @click="showDetail(circle)")
-        circle-card(:circle="circle")
+    transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
+      circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
+                                  @click.native="showDetail(circle)" :circle="circle")
 
     transition.content(name="slide-fade-reverse" mode="out-in")
       circle-detail(v-if="isDetail")
@@ -73,15 +73,13 @@ export default defineComponent({
 })
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   #circles
     padding-top: $header-nav-height
-    .content
-      margin: 0 24px
     .circle-list
-      padding: 24px 0
+      margin: 24px
       &-card
         width: 100%
-        padding-bottom: 24px
+        margin-bottom: 24px
         cursor: pointer
 </style>

@@ -1,10 +1,10 @@
 <template lang="pug">
   div#circle-list
-    category-navtag.category-label
-    div.circles
-      template(v-for="circle in circles")
-        div.item(:key="circle.id" @click="showDetail(circle)")
-          circle-card(:circle="circle")
+    template(v-for="category in ($store.state.categories.length ? $store.state.categories : 3)")
+      category-navtag(customClass="red").category-label
+      div.circles
+        template(v-for="circle in (circles.length ? circles : [{},{},{}])")
+          circle-card.item(:key="circle.id" @click.native="showDetail(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
@@ -27,9 +27,12 @@ export default Vue.extend({
   },
   methods: {
     init() {
+      setTimeout(() => {
       new CircleModel().getList().then(res => {
         this.circles = res.data.circles
       })
+      }, 1000)
+
     },
     showDetail(circle: Circle) {
       this.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
@@ -38,14 +41,27 @@ export default Vue.extend({
 })
 </script>
 
+<style lang="sass">
+  #circle-list
+    .yellow
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #FEC81A
+    .blue
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #306AA7
+    .red
+      background: linear-gradient(90deg, rgba(0, 0, 0, 0.2) 0%, rgba(255, 255, 255, 0) 100%), #E73D1D
+</style>
+
 <style lang="sass" scoped>
   #circle-list
+    background-color: rgb(250, 250, 250)
+    padding-top: 32px
     .category-label
-      padding: 0 0 20px 20px
+      padding: 8px 24px
       overflow-x: auto
       white-space: nowrap
       -webkit-overflow-scrolling: touch
     .circles
+      padding: 16px 24px 32px
       overflow-x: auto
       white-space: nowrap
       -webkit-overflow-scrolling: touch
@@ -59,7 +75,7 @@ export default Vue.extend({
         -webkit-appearance: none
       .item
         display: inline-block
-        width: 60%
+        width: 280px
         overflow: hidden
-        margin: 0 20px
+        margin-right: 32px
 </style>
