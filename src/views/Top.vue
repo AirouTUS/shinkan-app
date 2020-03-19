@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#top
+  div.bg-color#top
     top-section.page-section
     circle-list-section.page-section
 </template>

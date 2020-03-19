@@ -4,7 +4,7 @@
       category-navtag(customClass="red").category-label
       div.circles
         template(v-for="circle in (circles.length ? circles : [{},{},{}])")
-          circle-card.item(:key="circle.id" @click.native="showDetail(circle)" :circle="circle" customClass="circle-icon")
+          circle-card.item(:key="circle.id" @click.native.once="showDetail(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
@@ -35,6 +35,7 @@ export default Vue.extend({
 
     },
     showDetail(circle: Circle) {
+      if (circle.id === undefined) return
       this.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
     }
   }
@@ -53,7 +54,6 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
   #circle-list
-    background-color: rgb(250, 250, 250)
     padding-top: 32px
     .category-label
       padding: 8px 24px

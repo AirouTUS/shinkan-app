@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#circles
+  div.bg-color#circles
     transition(name="header-slide-fade" mode="out-in")
       category-navbar(v-show="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")
@@ -7,10 +7,10 @@
       
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
-                                  @click.native="showDetail(circle)" :circle="circle")
+                                  @click.native.once="showDetail(circle)" :circle="circle")
 
-    transition.content(name="slide-fade-reverse" mode="out-in")
-      circle-detail(v-if="isDetail")
+    transition(name="slide-fade-reverse" mode="out-in")
+      circle-detail.circles-circle-detail(v-if="isDetail")
 </template>
 
 <script lang="ts">
@@ -48,6 +48,7 @@ export default defineComponent({
     init ()
 
     const showDetail = (circle: Circle) => {
+      if (circle.id === undefined) return
       root.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
     }
 
@@ -75,6 +76,7 @@ export default defineComponent({
 
 <style lang="sass" scoped>
   #circles
+    height: 100%
     padding-top: $header-nav-height
     .circle-list
       margin: 24px
@@ -82,4 +84,6 @@ export default defineComponent({
         width: 100%
         margin-bottom: 24px
         cursor: pointer
+    .circles-circle-detail
+      height: 100%
 </style>

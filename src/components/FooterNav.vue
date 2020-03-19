@@ -3,17 +3,18 @@
     router-link.flexcolumn.has-space-betweeen.footer-nav-item(to="/" exact)
       tus-icon
       label TUS新歓
-    router-link.flexcolumn.has-space-between.footer-nav-item(:to='{ path: "/circles", query: { category: 0 } }')
+    router-link.flexcolumn.has-space-between.footer-nav-item(:to='{ path: "/circles", query: { category: 0 } }' :class="{'another-active-patarn': isActiveLink('/circles')}")
       list-icon
       label サークル一覧
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import { defineComponent } from '@vue/composition-api'
 import TusIcon from '@/components/Svg/TusIcon.vue'
 import ListIcon from '@/components/Svg/ListIcon.vue'
-export default Vue.extend({
-  components: { TusIcon, ListIcon }
+
+export default defineComponent({
+  components: { TusIcon, ListIcon },
 })
 </script>
 
@@ -24,10 +25,16 @@ export default Vue.extend({
         color: $main-color
       > svg > path
         fill: $main-color
+    .another-active-patarn
+      > p
+        color: $main-color
+      > svg > path
+        fill: $main-color
 </style>
 
 <style lang="sass" scoped>
   .footer-nav
+    height: $footer-nav-height
     position: fixed
     bottom: 0
     width: 100vw
@@ -46,5 +53,7 @@ export default Vue.extend({
         color: currentColor
         font-weight: bold
       &.router-link-active
+        color: $main-color
+      &.another-active-patarn
         color: $main-color
 </style>

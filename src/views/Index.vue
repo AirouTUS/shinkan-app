@@ -1,7 +1,7 @@
 <template lang="pug">
   div#index
     transition(name="slide-fade-reverse" mode="out-in")
-      router-view.spacer
+      router-view.index-container
     footer-nav
 </template>
 
@@ -16,8 +16,10 @@ export default Vue.extend({
 })
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
   #index
-  .spacer
-    padding-bottom: 55px
+    height: 100%
+    .index-container
+      height: calc(100% - $footer-nav-height)
+      padding-bottom: $footer-nav-height
 </style>
