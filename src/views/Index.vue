@@ -20,6 +20,6 @@ export default Vue.extend({
   #index
     height: 100%
     .index-container
-      height: calc(100% - $footer-nav-height)
+      // height: calc(100% - #{$footer-nav-height})
       padding-bottom: $footer-nav-height
 </style>

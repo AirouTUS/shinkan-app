@@ -76,7 +76,7 @@ export default defineComponent({
 
 <style lang="sass" scoped>
   #circles
-    height: 100%
+    min-height: 100%
     padding-top: $header-nav-height
     .circle-list
       margin: 24px
@@ -85,5 +85,4 @@ export default defineComponent({
         margin-bottom: 24px
         cursor: pointer
     .circles-circle-detail
-      height: 100%
 </style>
