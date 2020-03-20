@@ -15,12 +15,14 @@ export default defineComponent({
       activeTab: 0
     })
     const categories = computed(() => root.$store.state.categories)
+
     watch(() => state.activeTab, (val: number) => {
       const nowCategoryIndex = categories.value.findIndex((category: Category, i: number) => i === val)
       if (nowCategoryIndex !== -1) {
         emit("navigation", categories.value[nowCategoryIndex])
       }
-    })
+    })    
+
     return {
       ...toRefs(state),
       categories

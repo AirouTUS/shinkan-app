@@ -1,27 +1,39 @@
 <template lang="pug">
   div#circle-list
-    template(v-for="category in ($store.state.categories.length ? $store.state.categories : 3)")
-      category-navtag(customClass="red").category-label
+    template(v-for="category in (categories.length ? categories : [{},{},{}])")
+      category-navtag.category-label(@click.native.once="navigateToCircles" :customClass="selectColor(category.name)" :category="category" :key="category.id")
       div.circles
         template(v-for="circle in (circles.length ? circles : [{},{},{}])")
           circle-card.item(:key="circle.id" @click.native.once="navigateToCircle" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, computed } from '@vue/composition-api'
 import CircleComponent from '@/modules/circle'
 import { Circle } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
 import CircleCard from '@/components/CircleCard.vue'
 
+const selectColor = (name: string) => {
+  const color = {
+    "委員会": "yellow",
+    "文化系": "blue",
+    "体育会系": "red"
+  }
+  return color[name]
+}
+
 export default defineComponent({
   components: { CategoryNavtag, CircleCard },
   setup(_, ctx) {
     const circleComponent = CircleComponent(ctx)
+    const categories = computed(() => ctx.root.$store.state.categories)
     circleComponent.getList()
     return {
-      ...circleComponent
+      ...circleComponent,
+      categories,
+      selectColor
     }
   }  
 })

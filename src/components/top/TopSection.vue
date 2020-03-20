@@ -46,6 +46,7 @@ export default Vue.extend({
       height: 100%
       z-index: 2
       height: 100%
+      background-color: rgba(50, 50, 50, 0.3)
       > p
         color: white
         font-weight: bold

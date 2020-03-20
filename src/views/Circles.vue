@@ -4,7 +4,7 @@
       category-navbar(v-if="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")
       circle-header(v-if="isDetail" :circle="circle" :loading="loading")
-      
+
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
                                   @click.native="navigateToCircle" :circle="circle")
@@ -30,16 +30,15 @@ export default defineComponent({
 
     const circleComponent = CircleComponent(ctx)
     const isDetail = computed(() => !(typeof circleComponent.circleId.value === "undefined"))
-    watch(circleComponent.circle, (val) => console.log(val))
 
-    const init = () => {
-      circleComponent.getList()
+    watch(() => ctx.root.$route.fullPath, (val) => {
       if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
-    }
-    init()
+      circleComponent.reset()
+      if (!circleComponent.listLoading.value) circleComponent.getList()
+    })
 
-    const navigationHandler = (val: any) => {
-      console.log(val)
+    const navigationHandler = (category: Category) => {
+      circleComponent.navigateToCircles(category.id.toString())
     }
 
     return {

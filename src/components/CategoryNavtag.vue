@@ -2,14 +2,19 @@
   div.category-navtag.flexbox
     router-link.category-navtag-item.flexbox(to="/" :class="customClass")
       b-icon(icon="running")
-      span.name.bold 運動サークル
+      span.name.bold {{ category.name }}
       b-icon.mini-icon(icon="chevron-right")
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import { Category } from '../types'
+import { defineComponent, PropType } from '@vue/composition-api'
+
+export default defineComponent({
   props: {
+    category: {
+      type: Object as PropType<Category>
+    },
     customClass: {
       type: String
     }

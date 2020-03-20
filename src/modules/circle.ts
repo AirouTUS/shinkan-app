@@ -40,13 +40,11 @@ export default ({root}: SetupContext) => {
     }
   }
 
-  function navigateToCircles() {
-    root.$router.push({path: '/circles'})
-    getList()
+  function navigateToCircles(categoryId: string) {
+    root.$router.push({path: '/circles', query: {categoryId: categoryId || undefined}})
   }
   function navigateToCircle() {
     root.$router.push({name: 'circleDetail', params: {circleId: '1'}})
-    get()
   }
 
   async function infiniteHandler() {
@@ -55,7 +53,7 @@ export default ({root}: SetupContext) => {
 
   return {
     ...toRefs(state), circleId,
-    get, getList,
+    get, getList, reset,
     navigateToCircle, navigateToCircles
   }
 }

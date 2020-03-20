@@ -2,7 +2,7 @@
   nav#circle-header.flexbox.has-space-between
     div.space-icon
       b-icon(icon="chevron-left" @click.native="root.$router.go(-1)")
-    div.space-name.flexcolumn.has-space-between(v-if="!loading")
+    div.space-name.flexcolumn.has-space-between(v-if="!loading || !circle")
       h1.bold {{ circle.name }}
       h2 {{ circle.category.name }}
     div.space-none-icon
