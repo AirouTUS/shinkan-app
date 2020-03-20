@@ -2,9 +2,9 @@
   nav#circle-header.flexbox.has-space-between
     div.space-icon
       b-icon(icon="chevron-left" @click.native="root.$router.go(-1)")
-    div.space-name.flexcolumn.has-space-between
+    div.space-name.flexcolumn.has-space-between(v-if="!loading")
       h1.bold {{ circle.name }}
-      h2 運動サークル
+      h2 {{ circle.category.name }}
     div.space-none-icon
 </template>
 
@@ -19,7 +19,10 @@ type Props = {
 export default defineComponent({
   props: {
     circle: {
-      type: Object as PropType<Circle>
+      type: Object as PropType<Circle>,
+    },
+    loading: {
+      type: Boolean
     }
   },
   setup(props: Props, {root}) {

@@ -1,22 +1,21 @@
 <template lang="pug">
   div.bg-color#circles
     transition(name="header-slide-fade" mode="out-in")
-      category-navbar(v-show="!isDetail" @navigation="navigationHandler")
+      category-navbar(v-if="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")
-      circle-header(v-if="isDetail" :circle="selectedCircle")
+      circle-header(v-if="isDetail" :circle="circle" :loading="loading")
       
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
-                                  @click.native.once="showDetail(circle)" :circle="circle")
+                                  @click.native="navigateToCircle" :circle="circle")
 
     transition(name="slide-fade-reverse" mode="out-in")
-      circle-detail.circles-circle-detail(v-if="isDetail")
+      circle-detail.circles-circle-detail(v-if="isDetail" :circle="circle" :loading="loading")
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { defineComponent, reactive, toRefs, watch, onBeforeMount } from '@vue/composition-api'
-import CircleModel from '@/models/CircleModel'
+import { defineComponent, reactive, toRefs, watch, onBeforeMount, computed } from '@vue/composition-api'
+import CircleComponent from '@/modules/circle'
 import { Circle, Category } from '@/types'
 
 import CategoryNavbar from '@/components/CategoryNavbar.vue'
@@ -27,48 +26,25 @@ import CircleDetail from '@/templates/CircleDetail.vue'
 
 export default defineComponent({
   components: { CategoryNavbar, CircleCard, CircleDetail, CircleHeader },
-  setup(_ , {root}) {
-    const state = reactive({
-      circles: [] as Circle[],
-      isDetail: false,
-      selectedCircle: {} as Circle
-    })
+  setup(_ , ctx) {
 
-    const setCircleById = (id: number) => {
-      state.selectedCircle = state.circles.find(circle => circle.id === id) || {} as Circle
-      state.isDetail = true
-    }
+    const circleComponent = CircleComponent(ctx)
+    const isDetail = computed(() => !(typeof circleComponent.circleId.value === "undefined"))
+    watch(circleComponent.circle, (val) => console.log(val))
+
     const init = () => {
-      new CircleModel().getList().then(res => {
-        state.circles = res.data.circles
-        const id = Number(root.$route.params.id)
-        if ( !isNaN(id) ) setCircleById(id)
-      })
+      circleComponent.getList()
+      if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
     }
-    init ()
+    init()
 
-    const showDetail = (circle: Circle) => {
-      if (circle.id === undefined) return
-      root.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
+    const navigationHandler = (val: any) => {
+      console.log(val)
     }
-
-    const navigationHandler = (category: Category) => {
-      const query = Object.assign({}, root.$route.query, {category: category.id})
-      root.$router.push({name: 'circles', query})
-      state.circles = []
-      setTimeout(init, 200)
-    }
-
-    watch(() => root.$route.params.id, () => {
-      const id = Number(root.$route.params.id)
-      if ( state.circles.length > 0 && !isNaN(id) ) return setCircleById(id)
-      state.isDetail = false
-    })
 
     return {
-      ...toRefs(state),
-      navigationHandler,
-      showDetail,
+      ...circleComponent, isDetail,
+      navigationHandler
     }
   }
 })

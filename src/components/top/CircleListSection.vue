@@ -4,38 +4,26 @@
       category-navtag(customClass="red").category-label
       div.circles
         template(v-for="circle in (circles.length ? circles : [{},{},{}])")
-          circle-card.item(:key="circle.id" @click.native.once="showDetail(circle)" :circle="circle" customClass="circle-icon")
+          circle-card.item(:key="circle.id" @click.native.once="navigateToCircle" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import CircleModel from '@/models/CircleModel'
+import { defineComponent } from '@vue/composition-api'
+import CircleComponent from '@/modules/circle'
 import { Circle } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
 import CircleCard from '@/components/CircleCard.vue'
 
-export default Vue.extend({
+export default defineComponent({
   components: { CategoryNavtag, CircleCard },
-  data() {
+  setup(_, ctx) {
+    const circleComponent = CircleComponent(ctx)
+    circleComponent.getList()
     return {
-      circles: [] as Circle[]
+      ...circleComponent
     }
-  },
-  created() {
-    this.init()
-  },
-  methods: {
-    init() {
-      new CircleModel().getList().then(res => {
-        this.circles = res.data.circles
-      })
-    },
-    showDetail(circle: Circle) {
-      if (circle.id === undefined) return
-      this.$router.push({name: 'circleDetail', params: {id: circle.id.toString()}})
-    }
-  }
+  }  
 })
 </script>
 

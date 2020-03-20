@@ -19,9 +19,9 @@ export default abstract class BaseModel {
     this.axios = axios.create({baseURL, headers: BaseModel.getHeaders()})
   }
 
-  public async getList() {
+  public async getList(params = {}) {
     return this.axios
-      .get(``)
+      .get(``, {params})
   }
 
   public async get(id: string) {

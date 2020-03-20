@@ -21,7 +21,7 @@ const routes = [
         name: 'circles',
         component: Circles
       }, {
-        path: 'circles/:id',
+        path: 'circles/:circleId',
         name: 'circleDetail',
         component: Circles
       }

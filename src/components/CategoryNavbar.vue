@@ -1,32 +1,29 @@
 <template lang="pug">
   nav#category-navbar
     b-tabs(v-model="activeTab" position="is-centered")
-      b-tab-item(v-for="category in categories" :key="category.id" :label="category.name")
+      b-tab-item(v-for="category in categories" :key="category.id" :label="category.name" :value="5")
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import { defineComponent, reactive, computed, watch, toRefs } from '@vue/composition-api'
 import CategoryModel from '@/models/CategoryModel'
 import { Category } from '@/types'
 
-export default Vue.extend({
-  data() {
-    return {
-      categories: [] as Category[],
+export default defineComponent({
+  setup(props, {root, emit}) {
+    const state = reactive({
       activeTab: 0
-    }
-  },
-  created() {
-    new CategoryModel().getList().then(res => {
-      this.categories = res.data.categories as Category[]
     })
-  },
-  watch: {
-    activeTab(val: number) {
-      const nowCategoryIndex = this.categories.findIndex((category, i) => i === val)
+    const categories = computed(() => root.$store.state.categories)
+    watch(() => state.activeTab, (val: number) => {
+      const nowCategoryIndex = categories.value.findIndex((category: Category, i: number) => i === val)
       if (nowCategoryIndex !== -1) {
-        this.$emit("navigation", this.categories[nowCategoryIndex])
+        emit("navigation", categories.value[nowCategoryIndex])
       }
+    })
+    return {
+      ...toRefs(state),
+      categories
     }
   }
 })

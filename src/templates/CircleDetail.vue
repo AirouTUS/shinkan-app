@@ -1,25 +1,42 @@
 <template lang="pug">
   div#circle-detail
-    b-loading.images-loading(:active="!imageLoaded" :is-full-page="false")
-    b-carousel(:autoplay="false" :has-drag="true")
-      b-carousel-item
-        v-img.item-image(@onLoaded="imageLoaded = true" src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
-      b-carousel-item
-        v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
-      b-carousel-item
-        v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
+    div.detail-images
+      b-loading.images-loading(:active="!imageLoaded" :is-full-page="false")
+      b-carousel(:autoplay="false" :has-drag="true")
+        b-carousel-item
+          v-img.item-image(@onLoaded="imageLoaded = true" src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
+        b-carousel-item
+          v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
+        b-carousel-item
+          v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
+    div.detail-description
+      p {{  }}
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  data() {
-    return {
+import { defineComponent, PropType, reactive, toRefs } from '@vue/composition-api';
+import { Circle } from '../types';
+
+export default defineComponent({
+  props: {
+    circle: {
+      type: Object as PropType<Circle>,
+    }
+  },
+  setup(props: Circle) {
+    const state = reactive({
       imageLoaded: false
+    })
+    return {
+      ...toRefs(state)
     }
   }
 })
 </script>
+
+<style lang="sass" scoped>
+  .detail-images
+</style>
 
 <style lang="sass">
   #circle-detail
