@@ -36,7 +36,7 @@ export default Vue.extend({
     background: white
     .circle-card-content
       overflow: hidden
-      margin: 16px 16px 16px 16px
+      padding: 16px 16px 16px 16px
       &.is-loading
         height: 54px
 </style>
