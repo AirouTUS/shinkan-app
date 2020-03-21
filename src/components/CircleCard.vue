@@ -26,7 +26,7 @@ export default Vue.extend({
       width: 100%
       height: 250px
       > img
-        object-fit: cover
+        object-fit: contain
 </style>
 
 <style lang="sass" scoped>

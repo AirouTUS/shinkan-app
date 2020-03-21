@@ -3,18 +3,29 @@
     router-link.flexcolumn.has-space-betweeen.footer-nav-item(to="/" exact)
       tus-icon
       label TUS新歓
-    router-link.flexcolumn.has-space-between.footer-nav-item(:to='{ path: "/circles", query: { category: 0 } }' :class="{'another-active-patarn': isActiveLink('/circles')}")
+    div.flexcolumn.has-space-between.footer-nav-item(@click="onClickCircles" v-show="firstCategoryId" :class="{'another-active-patarn': isActiveLink('/circles')}")
       list-icon
       label サークル一覧
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api'
+import { defineComponent, computed } from '@vue/composition-api'
 import TusIcon from '@/components/Svg/TusIcon.vue'
 import ListIcon from '@/components/Svg/ListIcon.vue'
 
 export default defineComponent({
   components: { TusIcon, ListIcon },
+  setup(props, {root}) {
+    const firstCategoryId = computed(() => root.$store.state.categories[0]?.id)
+
+    const onClickCircles = () => {
+      if (root.$route.name === "circles") return
+      root.$router.push({ path: "/circles", query: {categoryId: firstCategoryId.value.toString()}})
+    }
+    return {
+      firstCategoryId, onClickCircles
+    }
+  }
 })
 </script>
 

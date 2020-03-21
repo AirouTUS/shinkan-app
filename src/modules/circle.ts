@@ -8,11 +8,12 @@ export default ({root}: SetupContext) => {
     circle: {} as Circle,
     listLoading: false,
     loading: false,
-    // perPage: 20,
     categoryId: NaN
   })
 
   const circleId = computed(() => root.$route.params.circleId)
+  let perPage = 20
+  let cursor = 0
 
   function reset() {
     state.circles = []
@@ -35,20 +36,25 @@ export default ({root}: SetupContext) => {
 
   function createQuery() {
     return {
-      // perPage: state.perPage,
+      start: cursor,
+      end: cursor+perPage-1,
       categoryId: state.categoryId || undefined
     }
   }
 
   function navigateToCircles(categoryId: string) {
+    // for page rendering
+    state.listLoading = true
     root.$router.push({path: '/circles', query: {categoryId: categoryId || undefined}})
   }
-  function navigateToCircle() {
-    root.$router.push({name: 'circleDetail', params: {circleId: '1'}})
+  function navigateToCircle(circleId: string) {
+    state.loading = true
+    root.$router.push({name: 'circleDetail', params: {circleId: circleId}})
   }
 
   async function infiniteHandler() {
     await getList()
+    cursor += perPage
   }
 
   return {

@@ -7,7 +7,7 @@
 
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
       circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
-                                  @click.native="navigateToCircle" :circle="circle")
+                                  @click.native="onClickCircle(circle)" :circle="circle")
 
     transition(name="slide-fade-reverse" mode="out-in")
       circle-detail.circles-circle-detail(v-if="isDetail" :circle="circle" :loading="loading")
@@ -29,21 +29,24 @@ export default defineComponent({
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)
-    const isDetail = computed(() => !(typeof circleComponent.circleId.value === "undefined"))
+    const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
 
     watch(() => ctx.root.$route.fullPath, (val) => {
       if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
       circleComponent.reset()
-      if (!circleComponent.listLoading.value) circleComponent.getList()
+      circleComponent.getList()
     })
 
     const navigationHandler = (category: Category) => {
       circleComponent.navigateToCircles(category.id.toString())
     }
+    const onClickCircle = (circle: Circle) => {
+      circleComponent.navigateToCircle(circle.id.toString())
+    }
 
     return {
       ...circleComponent, isDetail,
-      navigationHandler
+      navigationHandler, onClickCircle
     }
   }
 })

@@ -16,12 +16,34 @@ export default defineComponent({
     })
     const categories = computed(() => root.$store.state.categories)
 
-    watch(() => state.activeTab, (val: number) => {
-      const nowCategoryIndex = categories.value.findIndex((category: Category, i: number) => i === val)
-      if (nowCategoryIndex !== -1) {
-        emit("navigation", categories.value[nowCategoryIndex])
-      }
-    })    
+    let categoriesLoaded = false
+    const init = () => {
+      const categoryId = root.$route.query.categoryId ? Number(root.$route.query.categoryId) : NaN
+      // console.log("[CategoryNavbar-init(phase1)]: ", "[categoryId]: ", categoryId)
+
+      const finishInitWatcher = watch(categories, () => {
+        // console.log("[CategoryNavbar-init(phase2)]: ", "[categories length]: ", categories.value.length)
+        if (categories.value.length === 0) return
+        // watch stopper isn't maked untill finishing first watch progress
+        if (finishInitWatcher) finishInitWatcher()
+        categoriesLoaded = true
+        const categoryIndex = categories.value.findIndex((category: Category) => category.id === categoryId)
+        // console.log("[CategoryNavbar-init(phase3)]: ", "[categoryIndex]: ", categoryIndex)
+        if (categoryIndex !== -1) state.activeTab = categoryIndex
+      })
+    }
+    init()
+
+    watch(() => state.activeTab, (tab: number) => {
+      // console.log("[CategoryNavbar-Watch(state.activeTab)(phase1)]: ")
+      if (!categoriesLoaded) return
+
+      const categoryId = root.$route.query.categoryId ? Number(root.$route.query.categoryId) : NaN
+      const category = categories.value[tab]
+      if (categoryId === category.id) return console.warn("[CategoryNavbar]: ", "validate duplicated navigation ", "(always occurred when first rendering)")
+      // console.log("[CategoryNavbar-Watch(state.activeTab)(phase2)]")
+      emit("navigation", category)
+    })
 
     return {
       ...toRefs(state),

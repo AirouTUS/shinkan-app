@@ -1,7 +1,7 @@
 <template lang="pug">
   div.category-navtag.flexbox
-    router-link.category-navtag-item.flexbox(to="/" :class="customClass")
-      b-icon(icon="running")
+    div.category-navtag-item.flexbox(:class="customClass")
+      b-icon(:icon="icon")
       span.name.bold {{ category.name }}
       b-icon.mini-icon(icon="chevron-right")
 </template>
@@ -16,6 +16,9 @@ export default defineComponent({
       type: Object as PropType<Category>
     },
     customClass: {
+      type: String
+    },
+    icon: {
       type: String
     }
   }

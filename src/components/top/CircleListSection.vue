@@ -1,28 +1,41 @@
 <template lang="pug">
   div#circle-list
     template(v-for="category in (categories.length ? categories : [{},{},{}])")
-      category-navtag.category-label(@click.native.once="navigateToCircles" :customClass="selectColor(category.name)" :category="category" :key="category.id")
+      category-navtag.category-label(@click.native="onClickCategoryTag(category)" :customClass="selectColor(category.name).color" :icon="selectColor(category.name).icon" :category="category" :key="category.id")
       div.circles
         template(v-for="circle in (circles.length ? circles : [{},{},{}])")
-          circle-card.item(:key="circle.id" @click.native.once="navigateToCircle" :circle="circle" customClass="circle-icon")
+          circle-card.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
 import { defineComponent, computed } from '@vue/composition-api'
 import CircleComponent from '@/modules/circle'
-import { Circle } from '@/types'
+import { Circle, Category } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
 import CircleCard from '@/components/CircleCard.vue'
 
 const selectColor = (name: string) => {
-  const color = {
-    "委員会": "yellow",
-    "文化系": "blue",
-    "体育会系": "red"
+  let res = {color: "", icon: ""}
+  switch (name) {
+    case "委員会":
+      res.color = "yellow"
+      res.icon = "hands-helping"
+      break;
+    case "文化系":
+      res.color = "blue"
+      res.icon = "microscope"
+      break;
+    case "体育会系":
+      res.color = "red"
+      res.icon = "running"
+      break;
+    default:
+      break;
   }
-  return color[name]
+  return res
 }
+
 
 export default defineComponent({
   components: { CategoryNavtag, CircleCard },
@@ -30,10 +43,19 @@ export default defineComponent({
     const circleComponent = CircleComponent(ctx)
     const categories = computed(() => ctx.root.$store.state.categories)
     circleComponent.getList()
+
+    const onClickCircle = (circle: Circle) => {
+      circleComponent.navigateToCircle(circle.id.toString())
+    }
+    const onClickCategoryTag = (category: Category) => {
+      circleComponent.navigateToCircles(category.id.toString())
+    }
+
     return {
       ...circleComponent,
       categories,
-      selectColor
+      selectColor,
+      onClickCircle, onClickCategoryTag
     }
   }  
 })
