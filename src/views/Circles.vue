@@ -33,6 +33,7 @@ export default defineComponent({
 
     watch(() => ctx.root.$route.fullPath, (val) => {
       if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
+      circleComponent.categoryId.value = Number(ctx.root.$route.query.categoryId)
       circleComponent.reset()
       circleComponent.getList()
     })

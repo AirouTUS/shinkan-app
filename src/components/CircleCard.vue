@@ -2,8 +2,8 @@
   div#circle-card.circle-card
     v-img.eye-catch(:src="circle.eyecatch")
     div.circle-card-content(:class="{'is-loading': !circle.name}")
-      p.name.bold.is-large.mt-8 {{ circle.name }}
-      p.gray.mt-4 {{ circle.catchCopy }}
+      p.name.bold.is-large {{ circle.name }}
+      //- p.gray.mt-4 {{ circle.catchCopy }}
 </template>
 
 <script lang="ts">
@@ -35,7 +35,8 @@ export default Vue.extend({
     box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
     background: white
     .circle-card-content
-      padding: 0 16px 8px 16px
+      overflow: hidden
+      margin: 16px 16px 16px 16px
       &.is-loading
         height: 54px
 </style>

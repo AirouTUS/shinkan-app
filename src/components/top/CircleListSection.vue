@@ -3,13 +3,14 @@
     template(v-for="category in (categories.length ? categories : [{},{},{}])")
       category-navtag.category-label(@click.native="onClickCategoryTag(category)" :customClass="selectColor(category.name).color" :icon="selectColor(category.name).icon" :category="category" :key="category.id")
       div.circles
-        template(v-for="circle in (circles.length ? circles : [{},{},{}])")
+        template(v-for="circle in ( (circlesByCategories[category.name] && circlesByCategories[category.name].length || true) ? circlesByCategories[category.name] : [{},{},{}])")
           circle-card.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@vue/composition-api'
+import { defineComponent, computed, watch, reactive, toRefs } from '@vue/composition-api'
 import CircleComponent from '@/modules/circle'
+import CircleModel from '@/models/CircleModel'
 import { Circle, Category } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
@@ -42,9 +43,27 @@ export default defineComponent({
   setup(_, ctx) {
     const circleComponent = CircleComponent(ctx)
     const categories = computed(() => ctx.root.$store.state.categories)
+    const state = reactive({
+      circlesByCategories: {} as any
+    })
+    const finishInitWatcher = watch(categories, () => {
+      if (categories.value.length === 0) return
+      if (finishInitWatcher) finishInitWatcher()
+      categories.value.forEach((cat: Category) => {
+        new CircleModel().getList({start: 0, end: 19, categoryId: cat.id}).then((res) => {
+          const circles = {} as any
+          circles[cat.name] = res.data.circles
+          state.circlesByCategories = Object.assign({}, state.circlesByCategories, circles)
+          // state.circlesByCategories[cat.name] = res.data.circles
+          // state = reactive(state)
+          console.log(state.circlesByCategories[cat.name])
+        })
+      })
+    })
     circleComponent.getList()
 
     const onClickCircle = (circle: Circle) => {
+      if (!circle.id) return console.warn("[CircleListSectin]: ", "予期しないサークル個別への推移")
       circleComponent.navigateToCircle(circle.id.toString())
     }
     const onClickCategoryTag = (category: Category) => {
@@ -55,7 +74,8 @@ export default defineComponent({
       ...circleComponent,
       categories,
       selectColor,
-      onClickCircle, onClickCategoryTag
+      onClickCircle, onClickCategoryTag,
+      ...toRefs(state)
     }
   }  
 })
