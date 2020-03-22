@@ -33,8 +33,16 @@ a
 p
   margin: 0px
 
-.is-large
-  font-size: $text-large
+.is-size1
+  font-size: $size-1
+.is-size2
+  font-size: $size-2
+.is-size3
+  font-size: $size-3
+.is-size4
+  font-size: $size-4
+.is-size5
+  font-size: $size-5
 
 .flexbox
   display: flex
@@ -46,6 +54,8 @@ p
     justify-content: space-between
     // > :not(:last-child)
     //   margin-right: 0
+  &.is-middle
+    align-items: center
 
 .flexcolumn
   display: flex
@@ -66,7 +76,39 @@ p
 .mt-8
   margin-top: 8px
 
-.bg-color
-  background-color: $bg-color
+.bg-gray
+  background-color: $bg-gray
+.bg-white
+  background-color: white
 .bg-loading
   background-color: $loading-color
+
+.non-scrollbar
+  /* IE, Edge 対応 */
+  -ms-overflow-style: none
+  /* Firefox 対応 */
+  scrollbar-width: none
+  &::-webkit-scrollbar
+    /* Chrome, Safari 対応 */
+    display:none
+    -webkit-appearance: none
+
+.x-scroll
+  overflow-x: auto
+  white-space: nowrap
+  -webkit-overflow-scrolling: touch
+  > div
+    display: inline-block
+
+.square-container
+  position: relative
+  &::before
+    display: block
+    content: ""
+    padding-top: 100%
+  > div
+    position: absolute
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0    

@@ -1,6 +1,9 @@
 <template lang="pug">
-  div.bg-color#top
-    top-section.page-section
+  div#top
+    div.top-header
+      div.flexbox.is-middle
+        tus-icon.top-header-icon
+        p.bold.is-size1 東京理科大学WEB新歓
     circle-list-section.page-section
 </template>
 
@@ -12,17 +15,23 @@ import store from '@/store/index'
 import TopSection from '@/components/Top/TopSection.vue'
 // import CategoryListSection from '@/components/CategoryListSection.vue'
 import CircleListSection from '@/components/Top/CircleListSection.vue'
+import TusIcon from '@/components/Svg/TusIcon.vue'
 
 export default Vue.extend({
-  components: { CircleListSection, TopSection },
+  components: { CircleListSection, TopSection, TusIcon },
 })
 </script>
 
 <style lang="sass">
   #top
+    .top-header-icon 
+      width: 40px
+      margin-right: 8px
+      > path
+        fill: rgb(74, 74, 74)
 </style>
 <style lang="sass" scoped>
-  #top
-    .page-section
-      // margin-bottom: 28px
+  .top-header
+    padding: 24px
+    letter-spacing: 0.1rem
 </style>

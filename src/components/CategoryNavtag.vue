@@ -44,7 +44,7 @@ export default defineComponent({
       background: $loading-color
       box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
       .name
-        font-size: $text-large
+        font-size: $size-2
         margin-left: 16px
         margin-right: 8px
 </style>

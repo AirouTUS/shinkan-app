@@ -2,9 +2,9 @@
   div#circle-list
     template(v-for="category in (categories.length ? categories : [{},{},{}])")
       category-navtag.category-label(@click.native="onClickCategoryTag(category)" :customClass="selectColor(category.name).color" :icon="selectColor(category.name).icon" :category="category" :key="category.id")
-      div.circles
-        template(v-for="circle in ( (circlesByCategories[category.name] && circlesByCategories[category.name].length || true) ? circlesByCategories[category.name] : [{},{},{}])")
-          circle-card.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
+      div.circles.x-scroll.non-scrollbar
+        template(v-for="circle in ( (circlesByCategories[category.name] && circlesByCategories[category.name].length) ? circlesByCategories[category.name] : [{},{},{}])")
+          circle-card-mini.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
@@ -14,7 +14,7 @@ import CircleModel from '@/models/CircleModel'
 import { Circle, Category } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
-import CircleCard from '@/components/CircleCard.vue'
+import CircleCardMini from '@/components/CircleCardMini.vue'
 
 const selectColor = (name: string) => {
   let res = {color: "", icon: ""}
@@ -39,7 +39,7 @@ const selectColor = (name: string) => {
 
 
 export default defineComponent({
-  components: { CategoryNavtag, CircleCard },
+  components: { CategoryNavtag, CircleCardMini },
   setup(_, ctx) {
     const circleComponent = CircleComponent(ctx)
     const categories = computed(() => ctx.root.$store.state.categories)
@@ -56,7 +56,6 @@ export default defineComponent({
           state.circlesByCategories = Object.assign({}, state.circlesByCategories, circles)
           // state.circlesByCategories[cat.name] = res.data.circles
           // state = reactive(state)
-          console.log(state.circlesByCategories[cat.name])
         })
       })
     })
@@ -96,25 +95,10 @@ export default defineComponent({
     padding-top: 32px
     .category-label
       padding: 8px 24px
-      overflow-x: auto
-      white-space: nowrap
-      -webkit-overflow-scrolling: touch
     .circles
       padding: 16px 24px 32px
-      overflow-x: auto
-      white-space: nowrap
-      -webkit-overflow-scrolling: touch
-      /* IE, Edge 対応 */
-      -ms-overflow-style: none
-      /* Firefox 対応 */
-      scrollbar-width: none
-      &::-webkit-scrollbar
-        /* Chrome, Safari 対応 */
-        display:none
-        -webkit-appearance: none
       .item
-        display: inline-block
-        width: 280px
+        width: 160px
         overflow: hidden
         margin-right: 32px
 </style>

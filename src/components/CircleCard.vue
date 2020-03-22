@@ -2,7 +2,7 @@
   div#circle-card.circle-card
     v-img.eye-catch(:src="circle.eyecatch")
     div.circle-card-content(:class="{'is-loading': !circle.name}")
-      p.name.bold.is-large {{ circle.name }}
+      p.name.bold.is-size2 {{ circle.name }}
       //- p.gray.mt-4 {{ circle.catchCopy }}
 </template>
 

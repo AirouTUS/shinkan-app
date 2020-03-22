@@ -51,7 +51,7 @@ export default defineComponent({
           border-color: $main-color
           background: white
     .item-image
-      background: $bg-color
+      background: $bg-gray
       height: 280px
       > img
         object-fit: contain

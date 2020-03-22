@@ -1,5 +1,5 @@
 <template lang="pug">
-  div.bg-color#circles
+  div#circles
     transition(name="header-slide-fade" mode="out-in")
       category-navbar(v-if="!isDetail" @navigation="navigationHandler")
     transition(name="header-slide-fade" mode="out-in")

@@ -1,5 +1,7 @@
 <template lang="pug">
-  div
+  div.flexbox
+    div.circle-image
+    div.circle-info
 </template>
 
 <script lang="ts">
@@ -10,8 +12,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="sass">
-</style>
-
 <style lang="sass" scoped>
+  .circle-image
+  .circle-info
 </style>

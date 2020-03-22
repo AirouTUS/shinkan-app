@@ -42,7 +42,7 @@ export default defineComponent({
       align-items: center
       > h1
       > h2
-        font-size: $text-mini
+        font-size: $size-5
         color: $text-gray
     .space-none-icon
       width: 24px
