@@ -92,11 +92,11 @@ export default defineComponent({
 
 <style lang="sass" scoped>
   #circle-list
-    padding-top: 32px
+    padding-top: 16px
     .category-label
       padding: 8px 24px
     .circles
-      padding: 16px 24px 32px
+      padding: 8px 24px 12px
       .item
         width: 120px
         overflow: hidden

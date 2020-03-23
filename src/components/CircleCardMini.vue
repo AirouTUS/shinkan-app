@@ -38,5 +38,5 @@ export default Vue.extend({
       overflow: hidden
       margin: 12px 16px
       &.is-loading
-        height: calc(#{$size-5}+24px)
+        height: $size-4
 </style>
