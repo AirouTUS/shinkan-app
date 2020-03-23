@@ -2,7 +2,7 @@
   div#index.view-index
     transition(name="slide-fade-reverse" mode="out-in")
       router-view.index-container
-    div.view-index-background(:style="{backgroundImage: 'url(' + require('@/assets/svg/Rectangle51.svg') + ')' }")
+    div.view-index-background
     footer-nav
 </template>
 
@@ -23,6 +23,7 @@ export default Vue.extend({
     .view-index
       &-background
         z-index: -5
+        background: url(/svg/Rectangle51.svg)
         position: fixed
         bottom: 0
         background-repeat: no-repeat

@@ -54,6 +54,8 @@ export default defineComponent({
       align-items: center
       margin-right: 24px
       transition: all .2s ease
+      &:hover
+        color: $main-color !important
       > label
         padding-top: .25rem
         color: currentColor
