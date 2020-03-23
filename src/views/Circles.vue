@@ -13,14 +13,13 @@ import CircleComponent from '@/modules/circle'
 import { Circle, Category } from '@/types'
 
 import NavbarSection from '@/components/circles/NavbarSection.vue'
-import CircleCard from '@/components/CircleCard.vue'
 import CircleRow from '@/components/CircleRow.vue'
 import CircleHeader from '@/components/CircleHeader.vue'
 import CircleDetail from '@/templates/CircleDetail.vue'
 
 
 export default defineComponent({
-  components: { NavbarSection, CircleCard, CircleDetail, CircleHeader, CircleRow },
+  components: { NavbarSection, CircleDetail, CircleHeader, CircleRow },
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)
