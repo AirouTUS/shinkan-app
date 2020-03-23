@@ -1,16 +1,9 @@
 <template lang="pug">
   div#circles
-    transition(name="header-slide-fade" mode="out-in")
-      category-navbar(v-if="!isDetail" @navigation="navigationHandler")
-    transition(name="header-slide-fade" mode="out-in")
-      circle-header(v-if="isDetail" :circle="circle" :loading="loading")
-
-    transition-group.circle-list(name="slide-fade" mode="out-in" tag="div" v-show="!isDetail")
-      circle-card.circle-list-card(v-for="circle in circles" :key="circle.id" 
-                                  @click.native="onClickCircle(circle)" :circle="circle")
-
-    transition(name="slide-fade-reverse" mode="out-in")
-      circle-detail.circles-circle-detail(v-if="isDetail" :circle="circle" :loading="loading")
+    category-navbar(@navigation="navigationHandler")
+    transition-group.circle-list(name="slide-fade" mode="out-in" tag="div")
+      template(v-for="circle in circles")
+        circle-card.circle-list-card(:key="circle.id" :circle="circle")
 </template>
 
 <script lang="ts">
@@ -29,10 +22,10 @@ export default defineComponent({
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)
-    const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
+    // const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
 
     watch(() => ctx.root.$route.fullPath, (val) => {
-      if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
+      // if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
       circleComponent.categoryId.value = Number(ctx.root.$route.query.categoryId)
       circleComponent.reset()
       circleComponent.getList()
@@ -41,13 +34,13 @@ export default defineComponent({
     const navigationHandler = (category: Category) => {
       circleComponent.navigateToCircles(category.id.toString())
     }
-    const onClickCircle = (circle: Circle) => {
-      circleComponent.navigateToCircle(circle.id.toString())
-    }
+    // const onClickCircle = (circle: Circle) => {
+    //   circleComponent.navigateToCircle(circle.id.toString())
+    // }
 
     return {
-      ...circleComponent, isDetail,
-      navigationHandler, onClickCircle
+      ...circleComponent,
+      navigationHandler,
     }
   }
 })

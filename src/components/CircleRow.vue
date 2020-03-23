@@ -5,10 +5,22 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from '@vue/composition-api';
+import { defineComponent, PropType } from '@vue/composition-api';
+import { Circle } from '@/types';
+
+type Props = {
+  cirlce: Circle
+}
 
 export default defineComponent({
+  props: {
+    circle: {
+      type: Object as PropType<Circle>
+    }
+  },
+  setup(props: Props) {
 
+  }
 })
 </script>
 

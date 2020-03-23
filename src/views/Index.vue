@@ -25,11 +25,9 @@ export default Vue.extend({
         z-index: -5
         position: fixed
         bottom: 0
-        // background-size: 100% 100%
         background-repeat: no-repeat
-        height: 150px
+        height: 200px
         width: 100%
     .index-container
-      // height: calc(100% - #{$footer-nav-height})
       padding-bottom: $footer-nav-height
 </style>

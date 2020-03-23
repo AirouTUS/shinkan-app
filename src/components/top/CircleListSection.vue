@@ -50,7 +50,7 @@ export default defineComponent({
       if (categories.value.length === 0) return
       if (finishInitWatcher) finishInitWatcher()
       categories.value.forEach((cat: Category) => {
-        new CircleModel().getList({start: 0, end: 19, categoryId: cat.id}).then((res) => {
+        new CircleModel().getList({start: 0, end: 9, categoryId: cat.id}).then((res) => {
           const circles = {} as any
           circles[cat.name] = res.data.circles
           state.circlesByCategories = Object.assign({}, state.circlesByCategories, circles)
@@ -98,7 +98,7 @@ export default defineComponent({
     .circles
       padding: 16px 24px 32px
       .item
-        width: 160px
+        width: 120px
         overflow: hidden
-        margin-right: 32px
+        margin-right: 12px
 </style>

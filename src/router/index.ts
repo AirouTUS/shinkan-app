@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Index from '@/views/Index.vue'
 import Top from '@/views/Top.vue'
 import Circles from '@/views/Circles.vue'
+import Circle from '@/views/Circle.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,10 @@ const routes = [
         path: 'circles/:circleId',
         name: 'circleDetail',
         component: Circles
+      }, {
+        path: 'test/circles/:circleId',
+        name: 'testCircleDetail',
+        component: Circle
       }
     ]
   }
