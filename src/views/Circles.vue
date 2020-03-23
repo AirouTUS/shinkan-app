@@ -1,9 +1,10 @@
 <template lang="pug">
   div#circles
-    category-navbar(@navigation="navigationHandler")
+    navbar-section(@navigation="navigationHandler")
     transition-group.circle-list(name="slide-fade" mode="out-in" tag="div")
       template(v-for="circle in circles")
-        circle-card.circle-list-card(:key="circle.id" :circle="circle")
+        //- circle-card.circle-list-card(:key="circle.id" :circle="circle")
+        circle-row.circle-list-item(:key="circle.id" :circle="circle")
 </template>
 
 <script lang="ts">
@@ -11,14 +12,15 @@ import { defineComponent, reactive, toRefs, watch, onBeforeMount, computed } fro
 import CircleComponent from '@/modules/circle'
 import { Circle, Category } from '@/types'
 
-import CategoryNavbar from '@/components/CategoryNavbar.vue'
+import NavbarSection from '@/components/circles/NavbarSection.vue'
 import CircleCard from '@/components/CircleCard.vue'
+import CircleRow from '@/components/CircleRow.vue'
 import CircleHeader from '@/components/CircleHeader.vue'
 import CircleDetail from '@/templates/CircleDetail.vue'
 
 
 export default defineComponent({
-  components: { CategoryNavbar, CircleCard, CircleDetail, CircleHeader },
+  components: { NavbarSection, CircleCard, CircleDetail, CircleHeader, CircleRow },
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)
@@ -51,10 +53,8 @@ export default defineComponent({
     min-height: 100%
     padding-top: $header-nav-height
     .circle-list
-      margin: 24px
-      &-card
-        width: 100%
-        margin-bottom: 24px
+      margin: 16px
+      &-item
+        margin-bottom: 12px
         cursor: pointer
-    .circles-circle-detail
 </style>

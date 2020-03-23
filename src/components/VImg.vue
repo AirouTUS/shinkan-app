@@ -1,6 +1,6 @@
 <template lang="pug">
-  div.v-img(:class="{'is-loaded': loaded}")
-    img(:src="src" @load="onLoad" v-show="loaded")
+  div.v-img(:class="{'is-loading': loading}")
+    img(:src="src" @load="onLoad" v-show="!loading")
 </template>
 
 <script lang="ts">
@@ -20,10 +20,10 @@ export default defineComponent({
   props,
   setup(props: Props, { root, emit }) {
     const state = reactive({
-      loaded: false
+      loading: true
     })
     const onLoad = () => {
-      state.loaded = true
+      state.loading = false
       emit('onLoaded')
     }
     return {
@@ -35,10 +35,12 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
+  .is-loading
+    background-color: $loading-color !important
   .v-img
-    background-color: $loading-color
-    &.is-loaded
-      background-color: white
+    width: 100%
+    height: 100%
+    background-color: white
     > img
       width: 100%
       height: 100%

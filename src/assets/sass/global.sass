@@ -54,8 +54,16 @@ p
     justify-content: space-between
     // > :not(:last-child)
     //   margin-right: 0
+  &.has-start
+    justify-content: flex-start
+  &.has-end
+    justify-content: flex-end
+  &.has-wrap
+    flex-wrap: wrap
   &.is-middle
     align-items: center
+  > .is-right
+    margin-left: auto
 
 .flexcolumn
   display: flex
@@ -70,6 +78,12 @@ p
     justify-content: space-between
     // > :not(:last-child)
     //   margin-right: 0
+  &.has-start
+    justify-content: flex-start
+  &.has-end
+    justify-content: flex-end
+  > .is-bottom
+    margin-top: auto
 
 .mt-4
   margin-top: 4px
@@ -111,4 +125,97 @@ p
     top: 0
     right: 0
     bottom: 0
-    left: 0    
+    left: 0
+
+
+.m
+  &-0
+    margin: 0 !important
+  &-1
+    margin: .25em !important
+  &-2
+    margin: .5rem !important
+  &-3
+    margin: .75em !important
+  &r
+    &-0
+      margin-right: 0 !important
+    &-1
+      margin-right: .25em !important
+    &-2
+      margin-right: .5rem !important
+    &-3
+      margin-right: .75em !important
+  &l
+    &-0
+      margin-left: 0 !important
+    &-1
+      margin-left: .25em !important
+    &-2
+      margin-left: .5rem !important
+    &-3
+      margin-left: .75em !important
+  &t
+    &-0
+      margin-top: 0 !important
+    &-1
+      margin-top: .25em !important
+    &-2
+      margin-top: .5rem !important
+    &-3
+      margin-top: .75em !important
+  &b
+    &-0
+      margin-bottom: 0 !important
+    &-1
+      margin-bottom: .25em !important
+    &-2
+      margin-bottom: .5rem !important
+    &-3
+      margin-bottom: .75em !important
+
+.p
+  &-0
+    padding: 0 !important
+  &-1
+    padding: .25em !important
+  &-2
+    padding: .5rem !important
+  &-3
+    padding: .75em !important
+  &r
+    &-0
+      padding-right: 0 !important
+    &-1
+      padding-right: .25em !important
+    &-2
+      padding-right: .5rem !important
+    &-3
+      padding-right: .75em !important
+  &l
+    &-0
+      padding-left: 0 !important
+    &-1
+      padding-left: .25em !important
+    &-2
+      padding-left: .5rem !important
+    &-3
+      padding-left: .75em !important
+  &t
+    &-0
+      padding-top: 0 !important
+    &-1
+      padding-top: .25em !important
+    &-2
+      padding-top: .5rem !important
+    &-3
+      padding-top: .75em !important
+  &b
+    &-0
+      padding-bottom: 0 !important
+    &-1
+      padding-bottom: .25em !important
+    &-2
+      padding-bottom: .5rem !important
+    &-3
+      padding-bottom: .75em !important
