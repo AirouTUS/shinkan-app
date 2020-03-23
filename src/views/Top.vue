@@ -12,10 +12,10 @@ import Vue from 'vue'
 import router from '@/router'
 import store from '@/store/index'
 
-import TopSection from '@/components/Top/TopSection.vue'
+import TopSection from '@/components/top/TopSection.vue'
 // import CategoryListSection from '@/components/CategoryListSection.vue'
-import CircleListSection from '@/components/Top/CircleListSection.vue'
-import TusIcon from '@/components/Svg/TusIcon.vue'
+import CircleListSection from '@/components/top/CircleListSection.vue'
+import TusIcon from '@/components/svg/TusIcon.vue'
 
 export default Vue.extend({
   components: { CircleListSection, TopSection, TusIcon },
