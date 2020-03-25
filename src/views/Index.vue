@@ -12,7 +12,7 @@ import FooterNav from '@/components/FooterNav.vue'
 export default Vue.extend({
   components:{FooterNav},
   beforeCreate() {
-    this.$store.dispatch('getCategories')
+    // this.$store.dispatch('category/getList')
   }
 })
 </script>

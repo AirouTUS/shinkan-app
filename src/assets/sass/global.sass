@@ -16,11 +16,6 @@ body
   margin: 0
   padding: 0
 
-.bold
-  font-weight: bold
-.gray
-  color: $text-gray
-
 nav ul
   list-style: none
 
@@ -29,7 +24,7 @@ li
 
 a
   text-decoration: none
-  color: black
+  color: $text-default-color
 
 p
   margin: 0px
@@ -44,6 +39,8 @@ p
   font-size: $size-4
 .is-size5
   font-size: $size-5
+.is-size6
+  font-size: $size-6
 
 .flexbox
   display: flex
@@ -85,16 +82,26 @@ p
     justify-content: flex-end
   > .is-bottom
     margin-top: auto
+  &.is-middle
+    align-items: center
 
 .mt-4
   margin-top: 4px
 .mt-8
   margin-top: 8px
 
+.bold
+  font-weight: bold
+.gray
+  color: $text-gray
+.white
+  color: white
+
 .bg-gray
   background-color: $bg-gray
 .bg-white
   background-color: white
+  fill: white
 .bg-loading
   background-color: $loading-color
 

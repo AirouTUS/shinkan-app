@@ -1,6 +1,6 @@
 <template lang="pug">
   div.category-navtag.flexbox
-    div.category-navtag-item.flexbox(:class="customClass")
+    div.category-navtag-item.flexbox(:style="customStyle")
       b-icon(:icon="icon")
       span.name.bold {{ category.name }}
       b-icon.is-size5(icon="chevron-right")
@@ -15,7 +15,7 @@ export default defineComponent({
     category: {
       type: Object as PropType<Category>
     },
-    customClass: {
+    customStyle: {
       type: String
     },
     icon: {

@@ -1,14 +1,15 @@
 <template lang="pug">
-  div#circles
-    navbar-section(@navigation="navigationHandler")
-    transition-group.circle-list(name="slide-fade" mode="out-in" tag="div")
+  div(v-else)#circles
+    navbar-section.circles-navbar(@navigation="navigationHandler")
+    b-loading(:active="listLoading")
+    transition-group.circle-list(tag="div" name="slide-fade" mode="out-in")
       template(v-for="circle in circles")
         //- circle-card.circle-list-card(:key="circle.id" :circle="circle")
         circle-row.circle-list-item(:key="circle.id" :circle="circle")
 </template>
 
 <script lang="ts">
-import { defineComponent, reactive, toRefs, watch, onBeforeMount, computed } from '@vue/composition-api'
+import { defineComponent, reactive, toRefs, watch, onBeforeMount, computed, onMounted } from '@vue/composition-api'
 import CircleComponent from '@/modules/circle'
 import { Circle, Category } from '@/types'
 
@@ -50,7 +51,9 @@ export default defineComponent({
 <style lang="sass" scoped>
   #circles
     min-height: 100%
-    padding-top: $header-nav-height
+    padding-top: 16px
+    .circles-navbar
+      margin: 16px
     .circle-list
       margin: 16px
       &-item
