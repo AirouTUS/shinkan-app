@@ -34,6 +34,7 @@ export default defineComponent({
     })
 
     const navigationHandler = (category: Category) => {
+      if (Number(circleComponent.categoryId.value) === category.id) return ctx.root.$router.push({path: '/circles'})
       circleComponent.navigateToCircles(category.id.toString())
     }
     const onClickCircle = (circle: Circle) => {

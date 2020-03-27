@@ -1,8 +1,7 @@
 <template lang="pug">
   nav#category-navbar.category-navbar.flexbox.has-space-around
     template(v-for="category in categories")
-      router-link.category-navbar-item.flexcolumn.is-middle.gray(
-          :to="{name: 'circles', query: {categoryId: category.id.toString()}}")
+      div.category-navbar-item.flexcolumn.is-middle.gray(@click="emit('navigation', category)" :class="{'is-active':category.id.toString() === categoryId }")
         b-icon(:icon="toIcon(category)")
         span.is-size5.bold.mt-2 {{ category.name }}
 </template>
@@ -15,10 +14,12 @@ import CategoryComponent from '@/modules/category'
 
 export default defineComponent({
   setup(props, ctx) {
+    const {emit} = ctx
     const categoryComponent = CategoryComponent(ctx)
     categoryComponent.getList()
     return {
-      ...categoryComponent
+      ...categoryComponent,
+      emit
     }
   }
 })
@@ -26,7 +27,7 @@ export default defineComponent({
 
 <style lang="sass">
   #category-navbar
-    .router-link-exact-active
+    .is-active
       > span
         color: $main-color
       > svg > path
