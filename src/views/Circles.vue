@@ -5,7 +5,7 @@
     transition-group.circle-list(tag="div" name="slide-fade" mode="out-in")
       template(v-for="circle in circles")
         //- circle-card.circle-list-card(:key="circle.id" :circle="circle")
-        circle-row.circle-list-item(:key="circle.id" :circle="circle")
+        circle-row.circle-list-item(:key="circle.id" :circle="circle" @click.native="onClickCircle(circle)")
 </template>
 
 <script lang="ts">
@@ -36,13 +36,13 @@ export default defineComponent({
     const navigationHandler = (category: Category) => {
       circleComponent.navigateToCircles(category.id.toString())
     }
-    // const onClickCircle = (circle: Circle) => {
-    //   circleComponent.navigateToCircle(circle.id.toString())
-    // }
+    const onClickCircle = (circle: Circle) => {
+      circleComponent.navigateToCircle(circle.id.toString())
+    }
 
     return {
       ...circleComponent,
-      navigationHandler,
+      navigationHandler, onClickCircle
     }
   }
 })

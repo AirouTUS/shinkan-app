@@ -24,10 +24,6 @@ const routes = [
       }, {
         path: 'circles/:circleId',
         name: 'circleDetail',
-        component: Circles
-      }, {
-        path: 'test/circles/:circleId',
-        name: 'testCircleDetail',
         component: Circle
       }
     ]

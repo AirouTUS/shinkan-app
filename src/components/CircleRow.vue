@@ -3,15 +3,14 @@
     div.circle-image
       v-img(:src="circle.eyecatch")
     div.circle-info.flexcolumn.has-start
-      h2.is-size4.bold {{ circle.name }}
-      p.is-size5.gray.flexbox.is-middle
-        b-icon(icon="hand-point-right")
-        span {{ circle.about }}
-      div.flexbox.has-wrap(v-if="circle.types")
+      h2.bold {{ circle.name }}
+      p.is-size5.mt-1.gray(v-if="circle.catchCopy") {{ circle.catchCopy }}
+      div.flexbox.has-wrap.mt-1(v-if="circle.types")
         div.mr-1.mb-1(v-for="type in circle.types")
           span.circle-type.bold.is-size5.pt-1.pb-1.pr-2.pl-2(:key="type.id") {{ type.name }}
-      div.is-bottom
-        p.is-size5.mt-2(v-if="circle.catchCopy") {{ circle.catchCopy }}
+      p.is-size5.gray.is-bottom
+        b-icon(icon="hand-point-right")
+        span {{ circle.about }}
 </template>
 
 <script lang="ts">

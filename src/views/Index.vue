@@ -30,5 +30,6 @@ export default Vue.extend({
         height: 200px
         width: 100%
     .index-container
+      min-height: 100%
       padding-bottom: $footer-nav-height
 </style>

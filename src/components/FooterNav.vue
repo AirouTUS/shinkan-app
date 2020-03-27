@@ -35,7 +35,7 @@ export default defineComponent({
     z-index: 9
   .footer-nav
     padding: 0px 28px
-    box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.15)
+    box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25)
     border-radius: 100px
     > .footer-nav-item
       margin: 0 16px

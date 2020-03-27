@@ -3,7 +3,7 @@
     div.square-container
       v-img.eye-catch(:src="circle.eyecatch")
     div.circle-card-mini-content(:class="{'is-loading': !circle.name}")
-      p.name.is-size5.bold {{ circle.name }}
+      p.name.is-size4.bold {{ circle.name }}
 </template>
 
 <script lang="ts">
