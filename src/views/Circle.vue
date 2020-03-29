@@ -18,26 +18,17 @@
         b-icon(icon="hand-point-right")
         span {{ circle.about }}
       div.circle-kind.flexbox.has-start.is-middle.pl-1
-        div.category.flexbox.has-start.is-middle.mt-1.mr-1
+        div.category.flexbox.has-start.is-middle.mr-1
           span#committee(v-if="circle.category.id === 1")
             b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
           span#active(v-if="circle.category.id === 2")
             b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
           span#culture(v-if="circle.category.id === 3")
             b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
-        span.mt-1.mr-1(v-for="(type, i) in circle.types.length > 0 ? circle.types : [{}]" :key="i")
-          b.is-size4.pt-1.pb-1.pr-2.pl-2 {{type.name}}
+        div.type(v-if="circle.types.length != 0")
+          span.mr-1(v-for="(type, i) in circle.types.length > 0 ? circle.types : [{}]" :key="i")
+            b.is-size4.pt-1.pb-1.pr-2.pl-2 {{type.name}}
       p.pt-3.is-size4 {{ circle.description }}
-    //- div.circle-kind.flexbox.has-end.is-middle
-    //-   div.category.flexbox.has-start.is-middle.mt-1.mr-1
-    //-     span#committee(v-if="circle.category.id === 1")
-    //-       b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
-    //-     span#active(v-if="circle.category.id === 2")
-    //-       b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
-    //-     span#culture(v-if="circle.category.id === 3")
-    //-       b.is-size4.pt-1.pb-1.pr-2.pl-2 {{circle.category.name}}
-    //-   span.mt-1.mr-1(v-for="(type, i) in circle.types.length > 0 ? circle.types : [{}]" :key="i")
-    //-     b.is-size4.pt-1.pb-1.pr-2.pl-2 {{type.name}}
 </template>
 
 <script lang="ts">
@@ -103,7 +94,7 @@ export default defineComponent({
     .circle-content
         >div
           &.circle-kind
-            >div
+            >div.category
               >span
                 color: white
                 border-radius: 16px
@@ -113,10 +104,11 @@ export default defineComponent({
                   background: rgb(211, 67, 40)
                 &#culture
                   background: rgb(48, 106, 167)
-            >span
-              color: white
-              border-radius: 16px
-              background: #A8DC39
+            >div.type
+              >span
+                color: white
+                border-radius: 16px
+                background: #A8DC39
     
 </style>
 
