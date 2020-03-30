@@ -25,6 +25,8 @@ export default Vue.extend({
     margin-right: 8px
     background: url("/svg/TusIcon.svg")
   .top-header
-    padding: 24px
+    padding: 20px
     letter-spacing: 0.1rem
+  .page-section
+    padding: 0 20px
 </style>

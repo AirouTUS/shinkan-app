@@ -2,8 +2,8 @@
   nav#category-navbar.category-navbar.flexbox.has-space-around
     template(v-for="category in categories")
       div.category-navbar-item.flexcolumn.is-middle.gray(@click="emit('navigation', category)" :class="{'is-active':category.id.toString() === categoryId }")
-        b-icon(:icon="toIcon(category)")
-        span.is-size5.bold.mt-2 {{ category.name }}
+        b-icon.is-size1(:icon="toIcon(category)")
+        span.is-size4.bold.mt-2 {{ category.name }}
 </template>
 
 <script lang="ts">

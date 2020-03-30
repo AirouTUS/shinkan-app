@@ -2,8 +2,8 @@
   div.category-navtag.flexbox
     div.category-navtag-item.flexbox(:style="customStyle")
       b-icon(:icon="icon")
-      span.name.bold {{ category.name }}
-      b-icon.is-size5(icon="chevron-right")
+      span.name.bold.ml-3.mr-3 {{ category.name }}
+      b-icon(icon="chevron-right")
 </template>
 
 <script lang="ts">
@@ -31,10 +31,7 @@ export default defineComponent({
       padding: 8px 20px
       align-items: center
       color: white
-      border-radius: 8px
+      border-radius: 24px
       background: $loading-color
       box-shadow: 0 2px 2px 0 rgba(0,0,0,0.16), 0 0 0 1px rgba(0,0,0,0.08)
-      .name
-        margin-left: 12px
-        margin-right: 8px
 </style>
