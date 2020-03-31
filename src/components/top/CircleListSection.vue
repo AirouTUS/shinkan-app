@@ -73,7 +73,7 @@ export default defineComponent({
     .circles
       padding: 8px 0 12px
       .item
-        width: 120px
+        width: 100px
         // height: 140px
         overflow: hidden
         margin-right: 12px
