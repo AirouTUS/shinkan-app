@@ -15,11 +15,9 @@ Vue.config.productionTip = false
 
 Vue.use({install: vue => vue.mixin(mixin)})
 
-if (process.env.NODE_ENV === "production" || true) {
-  Vue.use(VueAnalytics, {
-    id: process.env.VUE_APP_TRACKING_ID
-  })
-}
+Vue.use(VueAnalytics, {
+  id: process.env.VUE_APP_TRACKING_ID
+})
 
 Vue.use(Buefy, {
   defaultIconPack: 'fas'
