@@ -17,3 +17,10 @@ export type Category = {
   id: number
   name: string
 }
+
+export type StateChanger = {
+  loaded: () => void
+  complete: (noResults?: boolean) => void
+  reset: () => void
+  error: () => void
+}

@@ -23,7 +23,7 @@ export default Vue.extend({
     .view-index
       &-background
         z-index: -5
-        background: url(/svg/Rectangle51.svg)
+        background: url(/svg/Rectangle55.svg)
         position: fixed
         bottom: 0
         background-repeat: no-repeat

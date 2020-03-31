@@ -24,21 +24,6 @@
 import { defineComponent, reactive, toRefs } from '@vue/composition-api'
 import CircleModel from '../models/CircleModel'
 
-// import Vue from 'vue'
-
-// export default Vue.extend({
-//   data() {
-//     return {
-//       circle: {}
-//     }
-//   },
-//   created() {
-//     const circleId = this.$route.params.circleId
-//     new CircleModel().get(circleId).then(res => {
-//       this.circle = res.data
-//     })
-//   }
-// })
 export default defineComponent({
   setup(props, {root}) {
     const state = reactive({
@@ -71,12 +56,17 @@ export default defineComponent({
         border-radius: 100px
         border: solid 4px white
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25)
+        &.is-loading
+          background: linear-gradient(-135deg, #E4A972, #9941D8)
         > img
           border-radius: 100px
           object-fit: contain
     .circle-image
       width: 100%
-      height: 240px
+      height: 400px
+      border-bottom: solid 2px $bg-gray
+      &.is-loading
+        background: linear-gradient(-135deg, #E4A972, #9941D8)
       > img
         object-fit: contain
 </style>
@@ -96,12 +86,12 @@ export default defineComponent({
       position: relative
       > div
         position: absolute
-        height: 100px
-        width: 100px
-        top: -50px
+        height: 120px
+        width: 120px
+        top: -60px
         left: calc( 50% - 50px )
     &-title
-      padding: 50px 16px 0 16px
+      padding: 60px 16px 0 16px
       text-align: center
     &-content
       padding: 0 16px

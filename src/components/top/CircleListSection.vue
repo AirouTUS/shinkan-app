@@ -7,7 +7,7 @@
                                       :icon="toIcon(category)")
       div.circles.x-scroll.non-scrollbar
         template(v-for="circle in ( (circlesByCategories[category.name] && circlesByCategories[category.name].length) ? circlesByCategories[category.name] : [{},{},{}])")
-          circle-card-mini.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
+          circle-card.item(:key="circle.id" @click.native="onClickCircle(circle)" :circle="circle" customClass="circle-icon")
 </template>
 
 <script lang="ts">
@@ -18,11 +18,11 @@ import CircleModel from '@/models/CircleModel'
 import { Circle, Category } from '@/types'
 
 import CategoryNavtag from '@/components/CategoryNavtag.vue'
-import CircleCardMini from '@/components/CircleCardMini.vue'
+import CircleCard from '@/components/CircleCardMini.vue'
 
 
 export default defineComponent({
-  components: { CategoryNavtag, CircleCardMini },
+  components: { CategoryNavtag, CircleCard },
   setup(_, ctx) {
     const categoryComponent = CategoryComponent(ctx)
     const circleComponent = CircleComponent(ctx)
@@ -73,7 +73,8 @@ export default defineComponent({
     .circles
       padding: 8px 0 12px
       .item
-        width: 100px
+        width: 120px
+        // height: 140px
         overflow: hidden
         margin-right: 12px
 </style>

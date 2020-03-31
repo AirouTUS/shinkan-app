@@ -1,11 +1,11 @@
 <template lang="pug">
-  div(v-else)#circles
+  div#circles
     navbar-section.circles-navbar(@navigation="navigationHandler")
-    b-loading(:active="listLoading")
-    transition-group.circle-list(tag="div" name="slide-fade" mode="out-in")
+    div.circle-list
       template(v-for="circle in circles")
-        //- circle-card.circle-list-card(:key="circle.id" :circle="circle")
         circle-row.circle-list-item(:key="circle.id" :circle="circle" @click.native="onClickCircle(circle)")
+        circle-detail(v-if="Number(circleId) === circle.id")
+    v-infinite-loading(@infinite="infiniteHandler" :identifier="identifier")
 </template>
 
 <script lang="ts">
@@ -24,13 +24,11 @@ export default defineComponent({
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)
-    // const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
+    const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
 
     watch(() => ctx.root.$route.fullPath, (val) => {
-      // if (ctx.root.$route.name === 'circleDetail') circleComponent.get()
-      circleComponent.categoryId.value = Number(ctx.root.$route.query.categoryId)
+      if (ctx.root.$route.name === 'circleDetail') return
       circleComponent.reset()
-      circleComponent.getList()
     })
 
     const navigationHandler = (category: Category) => {
@@ -42,6 +40,7 @@ export default defineComponent({
     }
 
     return {
+      isDetail,
       ...circleComponent,
       navigationHandler, onClickCircle
     }
@@ -59,5 +58,7 @@ export default defineComponent({
       margin: 16px
       &-item
         margin-bottom: 12px
+        border-radius: 8px
+        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
         cursor: pointer
 </style>

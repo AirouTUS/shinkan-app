@@ -35,12 +35,12 @@ export default defineComponent({
 </script>
 
 <style lang="sass" scoped>
-  .is-loading
-    background-color: $loading-color !important
   .v-img
     width: 100%
     height: 100%
     background-color: white
+    &.is-loading
+      background-color: $loading-color
     > img
       width: 100%
       height: 100%

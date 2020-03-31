@@ -1,48 +1,45 @@
 <template lang="pug">
-  div#circle-detail
-    div.detail-images
-      b-loading.images-loading(:active="!imageLoaded" :is-full-page="false")
-      b-carousel(:autoplay="false" :has-drag="true")
-        b-carousel-item
-          v-img.item-image(@onLoaded="imageLoaded = true" src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
-        b-carousel-item
-          v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
-        b-carousel-item
-          v-img.item-image(src="https://pbs.twimg.com/media/ES_qmkgUYAIpopG?format=jpg&name=4096x4096")
-    div.detail-description
-      p {{  }}
+  div(v-if="!circle.name")
+    b-loading(:active="true")
+  div#circle-detail.circle.bg-white(v-else)
+    b-carousel.circle-images(:autoplay="true" :has-drag="true" :indicator="false")
+      b-carousel-item(v-for="(image, i) in circle.images.length > 0 ? circle.images : [{}]" :key="i")
+        v-img.circle-image(:src="image.url")
+    div.circle-eyecatch
+      v-img(:src="circle.eyecatch")
+    div.circle-title.flexcolumn.is-middle
+      h1.bold.is-size1.pt-3 {{ circle.name }}
+      p.gray.mt-1(v-if="circle.catchCopy") {{ circle.catchCopy }}
+    div.circle-content
+      p.gray.is-size4.pt-3.mt-3
+        b-icon(icon="hand-point-right")
+        span {{ circle.about }}
+      p.pt-3.is-size4 {{ circle.description }}
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType, reactive, toRefs } from '@vue/composition-api';
-import { Circle } from '../types';
+import { defineComponent, reactive, toRefs } from '@vue/composition-api'
+import CircleModel from '../models/CircleModel'
 
 export default defineComponent({
-  props: {
-    circle: {
-      type: Object as PropType<Circle>,
-    }
-  },
-  setup(props: Circle) {
+  setup(props, {root}) {
     const state = reactive({
-      imageLoaded: false
+      circle: {}
     })
+    const circleId = root.$route.params.circleId
+    new CircleModel().get(circleId).then(res => {
+      state.circle = res.data
+    }) 
     return {
-      ...toRefs(state)
-    }
+      ...toRefs(state),
+      root
+    }   
   }
 })
 </script>
 
-<style lang="sass" scoped>
-  .detail-images
-</style>
-
 <style lang="sass">
   #circle-detail
-    .images-loading
-      margin-top: $header-nav-height
-      height: 280px
     .indicator-item
       > .indicator-style
         background-color: $main-color
@@ -50,9 +47,46 @@ export default defineComponent({
         > .indicator-style
           border-color: $main-color
           background: white
-    .item-image
-      background: $bg-gray
-      height: 280px
+
+    .circle-eyecatch
+      > div
+        border-radius: 100px
+        border: solid 4px white
+        box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25)
+        &.is-loading
+          background: $bg-gray
+        > img
+          border-radius: 100px
+          object-fit: contain
+    .circle-image
+      width: 100%
+      height: 400px
+      border-top: solid 2px $bg-gray
+      border-bottom: solid 2px $bg-gray
+      &.is-loading
+        background: linear-gradient(-135deg, #E4A972, #9941D8)
       > img
         object-fit: contain
+</style>
+
+<style lang="sass" scoped>
+  .circle
+    padding: 12px
+    position: relative
+    &-header
+      position: absolute
+      z-index: 1
+    &-eyecatch
+      position: relative
+      > div
+        position: absolute
+        height: 120px
+        width: 120px
+        top: -60px
+        left: calc( 50% - 50px )
+    &-title
+      padding: 60px 16px 0 16px
+      text-align: center
+    &-content
+      padding: 0 16px
 </style>

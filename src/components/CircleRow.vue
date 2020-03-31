@@ -45,8 +45,6 @@ export default defineComponent({
 <style lang="sass" scoped>
   .component-wrapper
     padding: 12px 
-    border-radius: 8px
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25)
   .circle-image
     width: 80px
     height: 80px

@@ -1,9 +1,8 @@
 <template lang="pug">
-  div#circle-card-mini.circle-card-mini
-    div.square-container
-      v-img.eye-catch(:src="circle.eyecatch")
-    div.circle-card-mini-content
-      p.m-3(:class="{'is-loading': !circle.name}") {{ circle.name}}
+  div#circle-card.circle-card.has-blur
+    div.is-blur
+    v-img.eye-catch(:src="circle.eyecatch")
+    
 </template>
 
 <script lang="ts">
@@ -21,19 +20,20 @@ export default Vue.extend({
 </script>
 
 <style lang="sass">
-  #circle-card-mini
+  #circle-card
     .eye-catch
       > img
         width: 100%
         height: 100%
-        object-fit: contain
+        object-fit: cover
 </style>
 
 <style lang="sass" scoped>
-  .circle-card-mini
+  .is-blur
+    z-index: 1
+  .circle-card
     background: white
-    border-radius: 8px
-    // border: solid 1px $bg-gray
+    border-radius: 4px
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.20)
     &-content
       overflow: hidden

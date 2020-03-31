@@ -8,6 +8,7 @@ import Buefy from 'buefy'
 import './assets/sass/global.sass'
 import './plugins/v-img'
 import './plugins/v-modal'
+import './plugins/v-infinite-loading'
 
 Vue.config.productionTip = false
 
