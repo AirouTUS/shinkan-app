@@ -36,6 +36,8 @@ export default defineComponent({
 <style lang="sass">
   #component-circle-row
     .v-img
+      width: 80px
+      height: 80px
       border-radius: 4px
       > img
         border-radius: 4px
@@ -46,13 +48,11 @@ export default defineComponent({
   .component-wrapper
     padding: 12px 
   .circle-image
-    width: 80px
-    height: 80px
-    border-radius: 16px
+
   .circle-info
     padding-left: 12px
   .circle-type
     color: white
     border-radius: 16px
-    background: $main-color
+    background: $color-orange
 </style>

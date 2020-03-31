@@ -27,6 +27,7 @@ export default defineComponent({
     const isDetail = computed(() => (typeof circleComponent.circleId.value !== "undefined"))
 
     watch(() => ctx.root.$route.fullPath, (val) => {
+      ctx.root.$ga.page(ctx.root.$route.fullPath)
       if (ctx.root.$route.name === 'circleDetail') return
       circleComponent.reset()
     })

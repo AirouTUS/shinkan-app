@@ -28,7 +28,6 @@ export default ({root}: SetupContext) => {
 
     state.listLoading = true
     return new CircleModel().getList(createQuery()).then(res => {
-      console.log(res.data)
       state.circles.push(...res.data.circles)
       if (!res.data.circles.length) isLast = true
     }).finally(() => {

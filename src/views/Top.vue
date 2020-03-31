@@ -16,6 +16,11 @@ import CircleListSection from '@/components/top/CircleListSection.vue'
 
 export default Vue.extend({
   components: { CircleListSection },
+  methods: {
+    track() {
+      this.$ga.page('/')
+    }
+  }
 })
 </script>
 <style lang="sass" scoped>
