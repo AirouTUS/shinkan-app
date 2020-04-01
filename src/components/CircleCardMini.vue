@@ -3,7 +3,7 @@
     div.square-container
       v-img.eye-catch(:src="circle.eyecatch")
     div.circle-card-mini-content
-      p.m-3(:class="{'is-loading': !circle.name}") {{ circle.name}}
+      p.m-3.is-size4(:class="{'is-loading': !circle.name}") {{ circle.name}}
 </template>
 
 <script lang="ts">
@@ -33,7 +33,6 @@ export default Vue.extend({
   .circle-card-mini
     background: white
     border-radius: 8px
-    // border: solid 1px $bg-gray
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.20)
     &-content
       overflow: hidden

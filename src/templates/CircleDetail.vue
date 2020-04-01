@@ -9,9 +9,9 @@
       v-img(:src="circle.eyecatch")
     div.circle-title.flexcolumn.is-middle
       h1.bold.is-size1.pt-3 {{ circle.name }}
-      p.gray.mt-1(v-if="circle.catchCopy") {{ circle.catchCopy }}
+      p.text-gray.mt-1(v-if="circle.catchCopy") {{ circle.catchCopy }}
     div.circle-content
-      p.gray.is-size4.pt-3.mt-3
+      p.text-gray.is-size4.pt-3.mt-3
         b-icon(icon="hand-point-right")
         span {{ circle.about }}
       p.pt-3.is-size4 {{ circle.description }}

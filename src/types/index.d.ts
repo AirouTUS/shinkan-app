@@ -3,7 +3,16 @@ export type Circle = {
   name: string
   about: string
   catchCopy: string
+  members_number: string
+  workTime: string
+  location: string
+  cost: string
   description: string
+  eyecatch: string
+  twitter: string
+  email: string
+  url: string
+  images: []
   types: Type[]
   category: Category
 }

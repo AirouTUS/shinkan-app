@@ -1,25 +1,43 @@
 <template lang="pug">
   div(v-if="!circle.name")
     b-loading(:active="true")
-  div#page-circle.bg-white(v-else)
+  div#page-circle.bg-default(v-else)
     div.page-wrapper
+
       div.circle-header
         div.m-3.p-2.action(@click="root.$router.go(-1)")
           b-icon(icon="chevron-left")
+
       b-carousel.circle-images(:autoplay="true" :has-drag="true" :indicator="false")
         b-carousel-item(v-for="(image, i) in circle.images.length > 0 ? circle.images : [{}]" :key="i")
           v-img.circle-image(:src="image.url")
+
       div.circle-eyecatch
         v-img(:src="circle.eyecatch")
+
       div.circle-title.flexcolumn.is-middle
         h1.bold.is-size1.pt-3 {{ circle.name }}
-        p.gray.mt-1(v-if="circle.catchCopy") {{ circle.catchCopy }}
-      div.circle-content
-        p.gray.is-size4.pt-3.mt-3
+        p.mt-3(v-if="circle.catchCopy") {{ circle.catchCopy }}
+        
+      div.circle-container.text-gray.bold
+        p(v-if="circle.about")
           b-icon(icon="hand-point-right")
-          span {{ circle.about }}
-        div.pt-3.is-size4(v-html="sanitize(circle.description)")
-        //- p.pt-3.is-size4 {{ circle.description }}
+          span.ml-3 {{ circle.about }}
+        p.pt-3(v-if="circle.location")
+          b-icon(icon="thumbtack")
+          span.ml-3 {{ circle.location }}
+        p.pt-3(v-if="circle.workTime")
+          b-icon(icon="clock")
+          span.ml-3 {{ circle.workTime }}
+        p.pt-3(v-if="circle.members_number")
+          b-icon(icon="users")
+          span.ml-3 {{ circle.members_number }}
+        p.pt-3(v-if="circle.cost")
+          b-icon(icon="dollar-sign")
+          span.ml-3 {{ circle.cost }}
+
+      div.circle-container(v-html="sanitize(circle.description)")
+        p(v-html="sanitize(circle.description)")
 </template>
 
 <script lang="ts">
@@ -67,12 +85,12 @@ export default defineComponent({
           object-fit: contain
     .circle-image
       width: 100%
-      height: 400px
-      border-bottom: solid 2px $bg-gray
+      height: 300px
+      background-color: $bg-default-color
       &.is-loading
         background: linear-gradient(-135deg, #E4A972, #9941D8)
       > img
-        object-fit: contain
+        object-fit: cover
 </style>
 
 <style lang="sass" scoped>
@@ -83,6 +101,8 @@ export default defineComponent({
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25)
   .page-wrapper
     padding-bottom: 40px
+  .circle-container
+    padding: 16px
   .circle
     position: relative
     &-header
@@ -95,9 +115,9 @@ export default defineComponent({
         height: 120px
         width: 120px
         top: -60px
-        left: calc( 50% - 50px )
+        left: calc( 50% - 60px )
     &-title
-      padding: 60px 16px 0 16px
+      padding: 60px 16px 16px 16px
       text-align: center
     &-content
       padding: 0 16px

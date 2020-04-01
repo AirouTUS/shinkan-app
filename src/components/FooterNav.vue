@@ -1,10 +1,10 @@
 <template lang="pug">
   div.footer-wrapper.flexbox.has-space-around
     nav#footer-nav.footer-nav.flexbox.bg-white
-      router-link.footer-nav-item.flexcolumn.is-middle.is-center.gray(to="/" exact)
+      router-link.footer-nav-item.flexcolumn.is-middle.is-center.text-gray(to="/" exact)
         b-icon(icon="home")
         label.is-size5.mt-1 ホーム
-      router-link.footer-nav-item.flexcolumn.is-middle.is-center.gray(to="/circles" exact)
+      router-link.footer-nav-item.flexcolumn.is-middle.is-center.text-gray(to="/circles" exact)
         b-icon(icon="list")
         label.is-size5.mt-1 サークル一覧
 </template>
@@ -43,7 +43,6 @@ export default defineComponent({
       &:hover
         color: $main-color !important
       > label
-        color: currentColor
         font-weight: bold
       &.router-link-active
         color: $main-color

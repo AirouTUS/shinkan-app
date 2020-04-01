@@ -1,7 +1,7 @@
 <template lang="pug">
   nav#category-navbar.category-navbar.flexbox.has-space-around
     template(v-for="category in categories")
-      div.category-navbar-item.flexcolumn.is-middle.gray(
+      div.category-navbar-item.flexcolumn.is-middle.text-gray(
           @click="emit('navigation', category)" 
           :class="{'is-active':category.id.toString() === categoryId }")
         b-icon.is-size2(:icon="toIcon(category)")

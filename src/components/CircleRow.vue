@@ -4,11 +4,11 @@
       v-img(:src="circle.eyecatch")
     div.circle-info.flexcolumn.has-start
       h2.bold {{ circle.name }}
-      p.is-size5.mt-1.gray(v-if="circle.catchCopy") {{ circle.catchCopy }}
+      p.is-size5.mt-1.text-gray(v-if="circle.catchCopy") {{ circle.catchCopy }}
       div.flexbox.has-wrap.mt-1(v-if="circle.types")
         div.mr-1.mb-1(v-for="type in circle.types")
           span.circle-type.bold.is-size5.pt-1.pb-1.pr-2.pl-2(:key="type.id") {{ type.name }}
-      p.is-size5.gray.is-bottom
+      p.is-size5.text-gray.is-bottom
         b-icon(icon="hand-point-right")
         span {{ circle.about }}
 </template>
