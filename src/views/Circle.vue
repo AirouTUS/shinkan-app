@@ -1,7 +1,5 @@
 <template lang="pug">
-  div(v-if="!circle.name")
-    b-loading(:active="true")
-  div#page-circle.bg-default(v-else)
+  div#page-circle.bg-default
     div.page-wrapper
 
       div.circle-header
@@ -58,7 +56,7 @@ export default defineComponent({
     return {
       ...toRefs(state),
       root
-    }   
+    }
   }
 })
 </script>
