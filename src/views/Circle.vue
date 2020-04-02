@@ -112,10 +112,6 @@ export default defineComponent({
   .sns-icon
     width: 24px
     height: 24px
-    .twitter
-      background: url(/svg/envelop.svg)
-    .email
-      background: url(/svg/email.svg)
   .action
     color: white
     border-radius: 100px
