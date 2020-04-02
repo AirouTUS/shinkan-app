@@ -46,12 +46,6 @@ import { Circle } from '@/types'
 import BackButton from '@/components/circle/BackButton.vue'
 import ShareButton from '@/components/circle/ShareButton.vue'
 
-const share = {
-  title: "東京理科大学 WEB新歓",
-  text: "東京理科大学 WEB新歓",
-  url: location.href
-}
-
 export default defineComponent({
   components: {BackButton, ShareButton},
   setup(props, {root}) {
@@ -60,6 +54,13 @@ export default defineComponent({
     const state = reactive({
       circle: {} as Circle
     })
+
+    const share = {
+      title: "東京理科大学 WEB新歓",
+      text: "東京理科大学 WEB新歓",
+      url: location.href
+    }
+
     const circleId = root.$route.params.circleId
     new CircleModel().get(circleId).then(res => {
       state.circle = res.data
