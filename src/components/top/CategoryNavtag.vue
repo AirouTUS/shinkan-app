@@ -7,7 +7,7 @@
 </template>
 
 <script lang="ts">
-import { Category } from '../types'
+import { Category } from '@/types'
 import { defineComponent, PropType } from '@vue/composition-api'
 
 export default defineComponent({
