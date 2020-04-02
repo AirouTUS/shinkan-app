@@ -68,7 +68,7 @@ export default ({root}: SetupContext) => {
   }
   function navigateToCircle(_circleId: string) {
     if (circleId.value === _circleId) return
-    root.$router.push({name: 'circleDetail', params: {circleId: _circleId}})
+    root.$router.push({name: 'circlesDetail', params: {circleId: _circleId}})
   }
 
   return {

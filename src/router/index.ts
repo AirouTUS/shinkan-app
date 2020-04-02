@@ -2,8 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '@/views/Index.vue'
 import Top from '@/views/Top.vue'
-import Circles from '@/views/Circles.vue'
-import Circle from '@/views/Circle.vue'
+import CirclesIndex from '@/views/circles/Index.vue'
+import CirclesDetail from '@/views/circles/Detail.vue'
 
 Vue.use(VueRouter)
 
@@ -19,12 +19,12 @@ const routes = [
         component: Top
       }, {
         path: 'circles',
-        name: 'circles',
-        component: Circles
+        name: 'circlesIndex',
+        component: CirclesIndex,
       }, {
         path: 'circles/:circleId',
-        name: 'circleDetail',
-        component: Circle
+        name: 'circlesDetail',
+        component: CirclesIndex
       }
     ]
   }
