@@ -7,7 +7,11 @@
 import { defineComponent } from '@vue/composition-api';
 
 export default defineComponent({
-
+  setup(props, {root}) {
+    return {
+      root
+    }
+  }
 })
 </script>
 
