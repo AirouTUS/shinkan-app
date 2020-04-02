@@ -2,12 +2,12 @@
   div#page-circle.bg-default
     div.page-wrapper
 
-      div.circle-header
-        div.m-3.p-2.action(@click="root.$router.go(-1)")
-          b-icon(icon="chevron-left")
+      div.circle-header.p-3.flexbox.has-space-between
+        back-button
+        share-button(:title="share.title" :text="share.text" :url="share.url")
 
       b-carousel.circle-images(:autoplay="true" :has-drag="true" :indicator="false")
-        b-carousel-item(v-for="(image, i) in circle.images.length > 0 ? circle.images : [{}]" :key="i")
+        b-carousel-item(v-for="(image, i) in (circle.images && circle.images.length > 0) ? circle.images : [{}]" :key="i")
           v-img.circle-image(:src="image.url")
 
       div.circle-eyecatch
@@ -40,22 +40,36 @@
 
 <script lang="ts">
 import { defineComponent, reactive, toRefs } from '@vue/composition-api'
-import CircleModel from '../models/CircleModel'
+import CircleModel from '@/models/CircleModel'
+import { Circle } from '@/types'
+
+import BackButton from '@/components/circle/BackButton.vue'
+import ShareButton from '@/components/circle/ShareButton.vue'
+
+const share = {
+  title: "東京理科大学 WEB新歓",
+  text: "東京理科大学 WEB新歓",
+  url: location.href
+}
 
 export default defineComponent({
+  components: {BackButton, ShareButton},
   setup(props, {root}) {
     root.$ga.page(root.$route.fullPath)
     
     const state = reactive({
-      circle: {}
+      circle: {} as Circle
     })
     const circleId = root.$route.params.circleId
     new CircleModel().get(circleId).then(res => {
       state.circle = res.data
+      share.text += ` ${state.circle.name}`
     }) 
+
     return {
       ...toRefs(state),
-      root
+      root,
+      share
     }
   }
 })
@@ -106,6 +120,7 @@ export default defineComponent({
     &-header
       position: absolute
       z-index: 1
+      width: 100%
     &-eyecatch
       position: relative
       > div

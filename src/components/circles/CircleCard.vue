@@ -1,21 +1,21 @@
 <template lang="pug">
-  div#component-circle-row.component-wrapper.flexbox.bg-white
-    div.circle-image
+  div#comp-circle-row.comp-wrapper.flexbox.bg-white
+    div.comp-wrapper-left
       v-img(:src="circle.eyecatch")
-    div.circle-info.flexcolumn.has-start
-      h2.bold {{ circle.name }}
-      p.is-size5.mt-1.text-gray(v-if="circle.catchCopy") {{ circle.catchCopy }}
-      div.flexbox.has-wrap.mt-1(v-if="circle.types")
-        div.mr-1.mb-1(v-for="type in circle.types")
-          span.circle-type.bold.is-size5.pt-1.pb-1.pr-2.pl-2(:key="type.id") {{ type.name }}
-      p.is-size5.text-gray.is-bottom
+    div.comp-wrapper-right.flexcolumn.has-start
+      div.flexbox.has-wrap.circle-tags(v-if="circle.types")
+        div.mr-1.mt-1(v-for="type in circle.types")
+          span.circle-type.is-size5.py-1.px-2.bg-gray.text-gray(:key="type.id") {{ type.name }}
+      h2.bold.mt-2 {{ circle.name }}
+      p.is-size4.text-gray(v-if="circle.catchCopy")
         b-icon(icon="hand-point-right")
         span {{ circle.about }}
+      //- p.is-size5.text-gray.is-bottom {{ circle.catchCopy }}
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from '@vue/composition-api';
-import { Circle } from '@/types';
+import { defineComponent, PropType } from '@vue/composition-api'
+import { Circle } from '@/types'
 
 type Props = {
   cirlce: Circle
@@ -34,7 +34,7 @@ export default defineComponent({
 </script>
 
 <style lang="sass">
-  #component-circle-row
+  #comp-circle-row
     .v-img
       width: 80px
       height: 80px
@@ -45,14 +45,13 @@ export default defineComponent({
 </style>
 
 <style lang="sass" scoped>
-  .component-wrapper
-    padding: 12px 
-  .circle-image
-
-  .circle-info
-    padding-left: 12px
+  .comp
+    &-wrapper
+      padding: 8px
+      &-right
+        padding-left: 12px
+  .circle-tags
+      overflow: hidden
   .circle-type
-    color: white
     border-radius: 16px
-    background: $color-orange
 </style>

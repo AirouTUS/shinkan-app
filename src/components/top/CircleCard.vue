@@ -1,8 +1,8 @@
 <template lang="pug">
-  div#circle-card-mini.circle-card-mini
+  div#circle-card-mini.comp.bg-white
     div.square-container
       v-img.eye-catch(:src="circle.eyecatch")
-    div.circle-card-mini-content
+    div.comp-content
       p.m-3.is-size4(:class="{'is-loading': !circle.name}") {{ circle.name}}
 </template>
 
@@ -30,8 +30,7 @@ export default Vue.extend({
 </style>
 
 <style lang="sass" scoped>
-  .circle-card-mini
-    background: white
+  .comp
     border-radius: 8px
     box-shadow: 1px 2px 2px rgba(0, 0, 0, 0.20)
     &-content

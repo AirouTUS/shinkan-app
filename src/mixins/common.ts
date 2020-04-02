@@ -6,7 +6,7 @@ export default Vue.extend({
       return this.$route.path.startsWith(path)
     },
     sanitize(text: string) {
-      return text.replace(/\n/g, '<br/>')
+      if (text) return text.replace(/\n/g, '<br/>')
     }
   }
 })

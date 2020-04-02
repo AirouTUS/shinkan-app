@@ -54,15 +54,13 @@ export default defineComponent({
         border: solid 4px white
         box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.25)
         &.is-loading
-          background: $bg-gray
+          background: $loading-color
         > img
           border-radius: 100px
           object-fit: contain
     .circle-image
       width: 100%
       height: 400px
-      border-top: solid 2px $bg-gray
-      border-bottom: solid 2px $bg-gray
       &.is-loading
         background: linear-gradient(-135deg, #E4A972, #9941D8)
       > img
