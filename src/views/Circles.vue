@@ -3,7 +3,7 @@
     navbar-section.circles-navbar(@navigation="navigationHandler")
     div.circle-list
       template(v-for="circle in circles")
-        circle-row.circle-list-item(:key="circle.id" :circle="circle" @click.native="onClickCircle(circle)")
+        circle-card.circle-list-item(:key="circle.id" :circle="circle" @click.native="onClickCircle(circle)")
         circle-detail(v-if="Number(circleId) === circle.id")
     v-infinite-loading(@infinite="infiniteHandler" :identifier="identifier")
 </template>
@@ -14,13 +14,12 @@ import CircleComponent from '@/modules/circle'
 import { Circle, Category } from '@/types'
 
 import NavbarSection from '@/components/circles/NavbarSection.vue'
-import CircleRow from '@/components/CircleRow.vue'
-import CircleHeader from '@/components/CircleHeader.vue'
+import CircleCard from '@/components/circles/CircleCard.vue'
 import CircleDetail from '@/templates/CircleDetail.vue'
 
 
 export default defineComponent({
-  components: { NavbarSection, CircleDetail, CircleHeader, CircleRow },
+  components: { NavbarSection, CircleDetail, CircleCard },
   setup(_ , ctx) {
 
     const circleComponent = CircleComponent(ctx)

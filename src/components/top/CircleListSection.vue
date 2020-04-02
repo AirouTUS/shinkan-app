@@ -17,8 +17,8 @@ import CategoryComponent from '@/modules/category'
 import CircleModel from '@/models/CircleModel'
 import { Circle, Category } from '@/types'
 
-import CategoryNavtag from '@/components/CategoryNavtag.vue'
-import CircleCard from '@/components/CircleCardMini.vue'
+import CategoryNavtag from '@/components/top/CategoryNavtag.vue'
+import CircleCard from '@/components/top/CircleCard.vue'
 
 
 export default defineComponent({
